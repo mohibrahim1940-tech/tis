@@ -1,0 +1,1815 @@
+<title>TIS New Energy</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<script>
+/* ===== SUPABASE SETTINGS — paste your TIS New Energy project values here ===== */
+var TIS_DB_URL = 'https://zffnheosoqyqnziuekjy.supabase.co';
+var TIS_DB_KEY = 'sb_publishable_fWpJvW4jAH-gYL3QpAX-vg_NMcko2Wp';
+/* ============================================================================ */
+var TIS_OPEN_ADMIN = (location.hash||'').toLowerCase()==='#admin';
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Sora:wght@400;500;600&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a subsurface cross-section opens the page; below it, services read like a well log — depth on the left, discipline on the right. */
+:root{
+  --navy:#0B1F33; --navy-2:#13304D;
+  --green:#12B76A; --green-ink:#0A7A47;
+  --bg:#F3F6F5; --surface:#FFFFFF; --fg:#0B1F33; --muted:#4F6273; --line:#D3DCD9;
+  --band:#0B1F33; --band-fg:#E8EFF3; --band-muted:#A9BACA;
+  --strata-1:#E4ECE8; --strata-2:#CFDCD6; --strata-3:#B9CBC3; --strata-4:#9FB6AC; --strata-5:#7E9A8F;
+  --display:'Unbounded', 'Arial Black', system-ui, sans-serif;
+  --body:'Sora', 'Segoe UI', system-ui, sans-serif;
+  --mono:'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --wrap:1180px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#08151F; --surface:#0F2333; --fg:#E8EFF3; --muted:#9DB0C0; --line:#22394C;
+  --green-ink:#3DDC8F; --band:#0F2333; --band-fg:#E8EFF3; --band-muted:#9DB0C0;
+  --strata-1:#12293A; --strata-2:#173243; --strata-3:#1C3B4B; --strata-4:#224553; --strata-5:#29505C;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#08151F; --surface:#0F2333; --fg:#E8EFF3; --muted:#9DB0C0; --line:#22394C;
+  --green-ink:#3DDC8F; --band:#0F2333; --band-fg:#E8EFF3; --band-muted:#9DB0C0;
+  --strata-1:#12293A; --strata-2:#173243; --strata-3:#1C3B4B; --strata-4:#224553; --strata-5:#29505C;
+  color-scheme:dark }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.65}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+a{color:var(--green-ink)}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.1}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--green-ink)}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--fg)}
+.brand .mark{width:38px;height:38px;border-radius:11px;background:var(--green);display:grid;place-items:center;flex:none}
+.brand .word{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.5px;display:flex;align-items:center;gap:1px;line-height:1}
+.brand small{display:block;font-family:var(--display);font-weight:500;font-size:8.5px;letter-spacing:.32em;color:var(--muted);margin-top:4px}
+.links{display:flex;gap:4px;flex-wrap:wrap}
+.links a{color:var(--fg);text-decoration:none;font-size:14px;font-weight:500;padding:10px 12px;border-radius:8px}
+.links a:hover{background:var(--bg)}
+.links a.cta{background:var(--navy);color:#fff}
+.links a.cta:hover{background:var(--navy-2)}
+:root[data-theme="dark"] .links a.cta{background:var(--green);color:#06210F}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .links a.cta{background:var(--green);color:#06210F}}
+@media (max-width:760px){.links a:not(.cta){display:none}}
+
+/* hero */
+.hero{padding-block:72px 0;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;align-items:center}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:32px}}
+.hero h1{font-size:clamp(34px,5.2vw,62px);font-weight:800;letter-spacing:-.02em;margin-top:18px}
+.hero h1 em{font-style:normal;color:var(--green-ink)}
+.hero .lede{font-size:18px;color:var(--muted);max-width:56ch;margin-top:22px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;font-family:var(--body)}
+.btn.primary{background:var(--green);color:#06210F}
+.btn.primary:hover{filter:brightness(.95)}
+.btn.ghost{border-color:var(--line);color:var(--fg);background:transparent}
+.btn.ghost:hover{border-color:var(--fg)}
+.section-figure{position:relative;max-width:100%}
+.section-figure svg{display:block;width:100%;height:auto}
+.fig-cap{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:10px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.flow{stroke-dasharray:6 8;animation:flow 2.4s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-28}}
+
+.strip{margin-top:64px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
+.strip-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));}
+.strip-row div{padding:20px 16px 20px 0;font-size:14px;color:var(--muted)}
+.strip-row b{display:block;font-family:var(--display);font-weight:700;font-size:15px;color:var(--fg);margin-bottom:2px}
+@media (max-width:760px){.strip-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* sections */
+section.block{padding-block:96px}
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:end;margin-bottom:48px}
+.head h2{font-size:clamp(28px,3.6vw,42px);font-weight:700;letter-spacing:-.015em;margin-top:12px}
+.head p{color:var(--muted);max-width:52ch}
+@media (max-width:860px){.head{grid-template-columns:1fr;gap:16px}}
+
+/* consulting pair */
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+@media (max-width:860px){.pair{grid-template-columns:1fr}}
+.pane{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:36px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.pane.dark{background:var(--navy);border-color:var(--navy);color:#E8EFF3}
+.pane.dark .muted{color:#A9BACA}
+.pane.dark .tag{border-color:#2A4763;color:#CFE0EC}
+.pane h3{font-size:24px;font-weight:700}
+.pane .muted{color:var(--muted)}
+.icon{width:48px;height:48px;border-radius:12px;background:var(--green);display:grid;place-items:center}
+.icon svg{stroke:#06210F}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-radius:999px;padding:5px 11px;color:var(--muted)}
+.pane ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.pane li{display:grid;grid-template-columns:18px 1fr;gap:10px;font-size:15px}
+.pane li::before{content:"";width:8px;height:8px;margin-top:9px;border-radius:2px;background:var(--green);transform:rotate(45deg)}
+
+/* well log */
+.log{border-top:2px solid var(--fg)}
+.log-row{display:grid;grid-template-columns:150px minmax(0,1.1fr) minmax(0,1fr);gap:32px;padding-block:36px;border-bottom:1px solid var(--line);align-items:start}
+@media (max-width:860px){.log-row{grid-template-columns:1fr;gap:14px;padding-block:28px}}
+.depth{font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+.depth .bar{height:8px;border-radius:2px;width:100%;max-width:150px}
+.log-row h3{font-size:22px;font-weight:700}
+.log-row .desc{color:var(--muted);margin-top:10px;max-width:56ch}
+.deliv{font-size:14px}
+.deliv b{font-family:var(--mono);font-weight:500;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--green-ink);display:block;margin-bottom:10px}
+.deliv ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+/* commissioning */
+.band{background:var(--band);color:var(--band-fg)}
+.band .eyebrow{color:var(--green)}
+.band .head p{color:var(--band-muted)}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid #2A4763}
+@media (max-width:960px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+.step{padding:28px 24px 28px 0;border-bottom:1px solid #2A4763;display:flex;flex-direction:column;gap:10px;min-width:0}
+.step .n{font-family:var(--mono);font-size:13px;color:var(--green)}
+.step h3{font-size:17px;font-weight:700;color:#fff}
+.step p{font-size:14px;color:var(--band-muted)}
+
+/* standards */
+.standards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+@media (max-width:860px){.standards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.standards{grid-template-columns:1fr}}
+.std{background:var(--surface);padding:22px 24px;display:flex;flex-direction:column;gap:4px}
+.std code{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--fg)}
+.std span{font-size:13.5px;color:var(--muted)}
+
+/* contact */
+.contact{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px}
+@media (max-width:900px){.contact{grid-template-columns:1fr}}
+.contact-info{display:flex;flex-direction:column;gap:24px}
+.contact-info h2{font-size:clamp(28px,3.6vw,42px);font-weight:700}
+.detail{display:flex;flex-direction:column;gap:4px;border-top:1px solid var(--line);padding-top:16px}
+.detail .k{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.detail .v{font-size:17px;font-weight:500;user-select:all}
+form{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:32px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:560px){form{grid-template-columns:1fr;padding:22px}}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field.full{grid-column:1/-1}
+label{font-size:13.5px;font-weight:600}
+input,select,textarea{font:inherit;font-size:15px;color:var(--fg);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;min-height:48px;width:100%}
+textarea{min-height:120px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--green)}
+.form-foot{grid-column:1/-1;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.note{font-size:14px;color:var(--muted)}
+.note.ok{color:var(--green-ink);font-weight:600}
+
+.wa{position:fixed;z-index:30;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));display:inline-flex;align-items:center;gap:10px;min-height:56px;padding:0 22px 0 16px;border-radius:999px;background:#25D366;color:#06210F;font-family:var(--body);font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 8px 24px rgba(11,31,51,.25)}
+.wa:hover{background:#1EBE5A}
+.wa.mail{bottom:calc(88px + env(safe-area-inset-bottom,0px));background:var(--navy);color:#FFFFFF}
+.wa.mail:hover{background:var(--navy-2)}
+.wa svg{flex:none}
+@media (max-width:520px){.wa span{display:none}.wa{padding:0;width:58px;justify-content:center}.wa.mail{bottom:calc(90px + env(safe-area-inset-bottom,0px))}}
+.detail a.v{color:var(--green-ink);text-decoration:none}
+.detail a.v:hover{text-decoration:underline}
+/* admin panel (opened from the footer link or #admin) */
+#tis-admin{
+  --a-new:#1D4ED8; --a-new-bg:#E3ECFF; --a-prog:#9A5B00; --a-prog-bg:#FFF1D6; --a-done:#0A7A47; --a-done-bg:#DDF5E8;
+  --a-danger:#B42318; --a-danger-bg:#FDE7E5;
+  position:fixed;inset:0;z-index:100;overflow:auto;background:var(--bg);color:var(--fg);font-size:15px;line-height:1.55;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) #tis-admin{
+  --a-new:#9DB9FF; --a-new-bg:#1A2A4D; --a-prog:#FFC66B; --a-prog-bg:#3A2A0E; --a-done:#5BE3A0; --a-done-bg:#0F3324; --a-danger:#FF8A80; --a-danger-bg:#3A1512}}
+:root[data-theme="dark"] #tis-admin{
+  --a-new:#9DB9FF; --a-new-bg:#1A2A4D; --a-prog:#FFC66B; --a-prog-bg:#3A2A0E; --a-done:#5BE3A0; --a-done-bg:#0F3324; --a-danger:#FF8A80; --a-danger-bg:#3A1512}
+#tis-admin .a-wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+#tis-admin .a-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);font:inherit;font-weight:600;font-size:14px;cursor:pointer;text-decoration:none;color:var(--fg)}
+#tis-admin .a-btn:hover{border-color:var(--fg)}
+#tis-admin .a-btn.primary{background:var(--green);border-color:var(--green);color:#06210F}
+#tis-admin .a-btn.danger{color:var(--a-danger);border-color:var(--a-danger)}
+#tis-admin .a-btn.danger.solid{background:var(--a-danger);color:#fff}
+#tis-admin .a-btn:disabled{opacity:.55;cursor:default}
+#tis-admin label{font-size:13px;font-weight:600}
+#tis-admin .a-mark{width:38px;height:38px;border-radius:11px;background:var(--green);display:grid;place-items:center;flex:none}
+#tis-admin .a-login{min-height:100%;display:grid;place-items:center;padding:24px max(16px,env(safe-area-inset-left,0px))}
+#tis-admin form.a-card{width:100%;max-width:400px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:18px;grid-template-columns:none}
+#tis-admin .a-card h2{font-size:22px}
+#tis-admin .a-card p{color:var(--muted);font-size:14px}
+#tis-admin .a-msg{font-size:14px;min-height:20px}
+#tis-admin .a-msg.err{color:var(--a-danger)}
+#tis-admin .a-head{position:sticky;top:0;z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+#tis-admin .a-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:66px;flex-wrap:wrap;padding-block:8px}
+#tis-admin .a-brand{display:flex;align-items:center;gap:12px}
+#tis-admin .a-brand b{font-family:var(--display);font-size:17px}
+#tis-admin .a-brand span{display:block;font-size:12px;color:var(--muted)}
+#tis-admin .a-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+#tis-admin .a-main{padding-block:28px 64px;display:flex;flex-direction:column;gap:20px}
+#tis-admin .a-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:700px){#tis-admin .a-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+#tis-admin .a-stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+#tis-admin .a-k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+#tis-admin .a-stat .v{font-family:var(--display);font-size:28px;font-variant-numeric:tabular-nums;margin-top:4px}
+#tis-admin .a-filters{display:grid;grid-template-columns:minmax(0,2fr) repeat(2,minmax(0,1fr));gap:10px;align-items:end}
+@media (max-width:700px){#tis-admin .a-filters{grid-template-columns:1fr}}
+#tis-admin .a-filters > div{display:flex;flex-direction:column;gap:6px}
+#tis-admin .a-layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:960px){#tis-admin .a-layout{grid-template-columns:1fr}}
+#tis-admin .a-list{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+#tis-admin .a-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;padding:14px 18px;border:0;border-bottom:1px solid var(--line);cursor:pointer;background:transparent;width:100%;text-align:left;font:inherit;color:inherit}
+#tis-admin .a-row:last-child{border-bottom:0}
+#tis-admin .a-row:hover{background:var(--bg)}
+#tis-admin .a-row[aria-current="true"]{background:var(--bg);box-shadow:inset 3px 0 0 var(--green)}
+#tis-admin .a-who{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#tis-admin .a-sub{grid-column:1/-1;color:var(--muted);font-size:13.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#tis-admin .a-meta{font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;grid-column:1/-1}
+#tis-admin .a-pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap;height:fit-content}
+#tis-admin .a-pill::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+#tis-admin .a-pill.new{color:var(--a-new);background:var(--a-new-bg)}
+#tis-admin .a-pill.in_progress{color:var(--a-prog);background:var(--a-prog-bg)}
+#tis-admin .a-pill.done{color:var(--a-done);background:var(--a-done-bg)}
+#tis-admin .a-empty{padding:40px 24px;text-align:center;color:var(--muted)}
+#tis-admin .a-detail{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:18px;position:sticky;top:90px;min-width:0}
+@media (max-width:960px){#tis-admin .a-detail{position:static}}
+#tis-admin .a-detail h3{font-size:20px;overflow-wrap:anywhere}
+#tis-admin .a-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:520px){#tis-admin .a-fields{grid-template-columns:1fr}}
+#tis-admin .a-v{overflow-wrap:anywhere;font-weight:500}
+#tis-admin .a-v a{color:var(--green-ink)}
+#tis-admin .a-message{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px 16px;white-space:pre-wrap;overflow-wrap:anywhere;max-height:320px;overflow:auto;margin-top:6px}
+#tis-admin .a-edit{display:flex;flex-direction:column;gap:8px}
+#tis-admin textarea{min-height:90px}
+#tis-admin .a-confirm{display:flex;gap:8px;flex-wrap:wrap;align-items:center;background:var(--a-danger-bg);color:var(--a-danger);border-radius:12px;padding:10px 12px;font-size:14px}
+#tis-admin .a-demo{background:var(--a-prog-bg);color:var(--a-prog);font-size:13.5px;font-weight:600;text-align:center;padding:8px max(16px,env(safe-area-inset-left,0px))}
+#tis-admin .a-toast{font-size:14px;color:var(--green-ink)}
+#tis-admin .a-toast.err{color:var(--a-danger)}
+.admin-link{font:inherit;font-size:13px;color:var(--muted);background:none;border:0;padding:8px 4px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;min-height:44px}
+.admin-link:hover{color:var(--fg)}
+
+/* languages */
+:root:lang(ru){--body:'Manrope','Segoe UI',system-ui,sans-serif}
+h1,h2,h3{overflow-wrap:break-word;hyphens:auto}
+p,li{hyphens:auto}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.lang-wrap{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line);border-radius:12px;padding:0 4px 0 10px;background:var(--bg);min-height:50px}
+.lang-wrap svg{stroke:var(--muted);flex:none}
+.lang-wrap select{border:0;background:transparent;min-height:40px;padding:0 6px;font-weight:600;font-size:14px;width:auto;color:var(--fg);cursor:pointer}
+.lang-wrap select:focus{outline:none}
+.lang-wrap:focus-within{border-color:var(--green)}
+
+/* department switch */
+.seg-group{display:inline-flex;flex-wrap:wrap;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:4px;gap:4px}
+.seg{font:inherit;font-size:14px;font-weight:600;color:var(--muted);background:transparent;border:0;border-radius:9px;min-height:40px;padding:0 14px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.seg:hover{color:var(--fg)}
+.seg[aria-pressed="true"]{background:var(--navy);color:#FFFFFF}
+.seg .dot{width:8px;height:8px;border-radius:50%;background:currentColor;opacity:.6}
+.seg[aria-pressed="true"] .dot{background:var(--green);opacity:1}
+.nav-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+@media (max-width:760px){.nav{padding-block:10px}.nav-right{width:100%;justify-content:space-between}.seg{padding:0 10px;font-size:13px}}
+.depts{padding-block:56px 0}
+.depts-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:20px}
+@media (max-width:960px){.depts-grid{grid-template-columns:1fr}}
+.dept-card{font:inherit;text-align:left;cursor:pointer;background:var(--surface);color:var(--fg);border:2px solid var(--line);border-radius:18px;padding:24px;display:grid;grid-template-columns:56px minmax(0,1fr);gap:8px 18px;align-items:start;transition:border-color .2s, transform .2s}
+.dept-card .state{grid-column:2}
+.steps.six{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:760px){.steps.six{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.steps.six{grid-template-columns:1fr}}
+.dept-card:hover{border-color:var(--muted);transform:translateY(-2px)}
+.dept-card[aria-pressed="true"]{border-color:var(--green);background:var(--surface)}
+.dept-card .di{width:56px;height:56px;border-radius:14px;background:var(--bg);display:grid;place-items:center}
+.dept-card[aria-pressed="true"] .di{background:var(--green)}
+.dept-card .di svg{stroke:var(--fg)}
+.dept-card[aria-pressed="true"] .di svg{stroke:#06210F}
+.dept-card h2{font-size:20px;font-weight:700}
+.dept-card p{font-size:14px;color:var(--muted);margin-top:4px}
+.dept-card .state{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.dept-card[aria-pressed="true"] .state{color:var(--green-ink)}
+@media (max-width:520px){.dept-card{grid-template-columns:48px minmax(0,1fr);padding:20px}.dept-card .state{grid-column:2}.dept-card .di{width:48px;height:48px}}
+.steps.five{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (max-width:960px){.steps.five{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.steps.five{grid-template-columns:1fr}}
+.blades{transform-box:view-box;transform-origin:470px 92px;animation:spin 6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+footer{border-top:1px solid var(--line);padding-block:32px;font-size:13.5px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+</style>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="TIS New Energy, home">
+      <span class="mark" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 100 100"><path d="M60 8 L24 58 H52 Z" fill="#FFFFFF"/><path d="M48 42 H76 L40 92 Z" fill="#0B1F33"/></svg>
+      </span>
+      <span>
+        <span class="word">T<svg width="11" height="20" viewBox="0 0 44 96" aria-hidden="true"><path d="M30 0 L4 54 H22 L14 96 L42 38 H24 Z" fill="#12B76A"/></svg>S</span>
+        <small>NEW ENERGY</small>
+      </span>
+    </a>
+    <div class="nav-right">
+      <div class="lang-wrap">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>
+        <label class="sr-only" for="lang-select">Language</label>
+        <select id="lang-select">
+          <option value="en">EN · English</option>
+          <option value="nl">NL · Nederlands</option>
+          <option value="ro">RO · Română</option>
+          <option value="ru">RU · Русский</option>
+        </select>
+      </div>
+      <div class="seg-group" role="group" aria-label="Choose department">
+        <button class="seg" type="button" data-set="oil" aria-pressed="true"><span class="dot"></span>Oil &amp; Gas</button>
+        <button class="seg" type="button" data-set="energy" aria-pressed="false"><span class="dot"></span>New Energy</button>
+        <button class="seg" type="button" data-set="rca" aria-pressed="false"><span class="dot"></span>Root Cause Analysis</button>
+      </div>
+      <nav class="links" aria-label="Main">
+        <a class="cta" href="#contact">Request a proposal</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Total Integrated Solutions · Oil, gas &amp; new energy</div>
+        <h1 data-dept="oil">From the reservoir to the <em>custody meter</em>, one engineering team.</h1>
+        <h1 data-dept="energy" hidden>Engineering the <em>energy transition</em>, from strategy to switch-on.</h1>
+        <h1 data-dept="rca" hidden>Find the <em>real cause</em>. Stop the failure coming back.</h1>
+        <p class="lede" data-dept="rca" hidden>The TIS Root Cause Analysis department investigates equipment failures, production losses, metering discrepancies and process incidents across oil, gas and new energy assets. We separate symptoms from causes and deliver corrective actions that last.</p>
+        <p class="lede" data-dept="energy" hidden>TIS New Energy helps operators and industry cut emissions and add low-carbon capacity: decarbonisation roadmaps, carbon capture and storage, geothermal, solar, wind, storage and hydrogen, delivered with the same engineering discipline we bring to oil and gas.</p>
+        <p class="lede" data-dept="oil">TIS provides consultancy and engineering services across the full hydrocarbon value chain: subsurface studies, reservoir and production engineering, pipeline metering and commissioning, backed by disciplined project management and root cause analysis.</p>
+        <div class="actions">
+          <a class="btn primary" href="#contact">Discuss your project
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn ghost" href="#technical">View our services</a>
+        </div>
+      </div>
+
+      <figure class="section-figure" style="margin:0" data-dept="oil">
+        <svg viewBox="0 0 560 420" role="img" aria-label="Cross-section of subsurface layers with a deviated well reaching the reservoir and a pipeline to a metering skid at surface">
+          <rect x="0" y="0" width="560" height="420" rx="18" fill="var(--surface)"/>
+          <path d="M0 96 C120 86 220 104 320 94 S500 88 560 96 V160 C460 168 360 150 260 162 S80 170 0 158 Z" fill="var(--strata-1)"/>
+          <path d="M0 158 C80 170 180 160 260 162 S460 168 560 160 V232 C470 244 380 222 280 236 S100 246 0 230 Z" fill="var(--strata-2)"/>
+          <path d="M0 230 C100 246 200 234 280 236 S470 244 560 232 V296 C450 300 360 270 270 284 S120 300 0 300 Z" fill="var(--strata-3)"/>
+          <path d="M150 292 C220 270 330 262 420 278 C460 286 500 290 560 288 V330 C480 336 380 316 300 324 S190 330 150 322 Z" fill="#12B76A" opacity=".85"/>
+          <path d="M0 300 C120 300 140 296 150 292 L150 322 C190 330 220 326 300 324 S480 336 560 330 V420 H0 Z" fill="var(--strata-5)"/>
+          <path d="M0 96 C120 86 220 104 320 94 S500 88 560 96" fill="none" stroke="var(--fg)" stroke-width="2"/>
+          <!-- surface: wellhead, pipeline, meter -->
+          <rect x="112" y="64" width="16" height="32" rx="2" fill="var(--fg)"/>
+          <rect x="104" y="58" width="32" height="8" rx="2" fill="var(--fg)"/>
+          <path d="M136 80 H392" stroke="var(--fg)" stroke-width="6" stroke-linecap="round"/>
+          <path class="flow" d="M136 80 H392" stroke="#12B76A" stroke-width="2.5" fill="none"/>
+          <rect x="392" y="60" width="64" height="38" rx="6" fill="var(--fg)"/>
+          <circle cx="424" cy="79" r="11" fill="none" stroke="#12B76A" stroke-width="2.5"/>
+          <path d="M424 79 L431 73" stroke="#12B76A" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- well path -->
+          <path d="M120 96 V200 C120 250 170 300 260 304 H400" fill="none" stroke="var(--fg)" stroke-width="3.5" stroke-linecap="round"/>
+          <g fill="var(--fg)"><circle cx="300" cy="304" r="3"/><circle cx="340" cy="304" r="3"/><circle cx="380" cy="304" r="3"/></g>
+          <!-- labels -->
+          <g font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--fg)">
+            <text x="400" y="52">METERING SKID</text>
+            <text x="94" y="48">WELLHEAD</text>
+            <text x="424" y="128" fill="var(--muted)">OVERBURDEN</text>
+            <text x="424" y="204" fill="var(--muted)">SEAL / CAP ROCK</text>
+            <text x="20" y="268" fill="var(--muted)">TRANSITION</text>
+            <text x="300" y="296">RESERVOIR</text>
+            <text x="20" y="390" fill="var(--muted)">BASEMENT</text>
+          </g>
+          <g font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--muted)">
+            <text x="532" y="112" text-anchor="end">0 m</text>
+            <text x="532" y="248" text-anchor="end">1,800 m</text>
+            <text x="532" y="350" text-anchor="end">2,600 m TVD</text>
+          </g>
+        </svg>
+        <figcaption class="fig-cap"><span>Schematic: well to pipeline to custody transfer</span><span>Not to scale</span></figcaption>
+      </figure>
+
+      <figure class="section-figure" style="margin:0" data-dept="energy" hidden>
+        <svg viewBox="0 0 560 420" role="img" aria-label="Solar panels and a wind turbine at surface, with a CO2 injection well storing carbon in a deep formation beneath a cap rock">
+          <rect x="0" y="0" width="560" height="420" rx="18" fill="var(--surface)"/>
+          <path d="M0 150 C140 140 260 156 380 146 S520 142 560 150 V214 C440 222 340 204 240 214 S80 224 0 212 Z" fill="var(--strata-1)"/>
+          <path d="M0 212 C80 224 160 216 240 214 S440 222 560 214 V272 C450 280 340 262 250 270 S90 280 0 274 Z" fill="var(--strata-3)"/>
+          <path d="M0 274 C90 280 170 272 250 270 S450 280 560 272 V330 C460 338 360 318 260 326 S90 336 0 330 Z" fill="#12B76A" opacity=".85"/>
+          <path d="M0 330 C90 336 170 330 260 326 S460 338 560 330 V420 H0 Z" fill="var(--strata-5)"/>
+          <path d="M0 150 C140 140 260 156 380 146 S520 142 560 150" fill="none" stroke="var(--fg)" stroke-width="2"/>
+          <!-- solar array -->
+          <g fill="var(--fg)">
+            <path d="M40 132 L64 108 H112 L88 132 Z"/><path d="M104 132 L128 108 H176 L152 132 Z"/><path d="M168 132 L192 108 H240 L216 132 Z"/>
+          </g>
+          <g stroke="var(--surface)" stroke-width="1.2"><path d="M76 108 L52 132 M88 108 L64 132 M100 108 L76 132 M140 108 L116 132 M152 108 L128 132 M164 108 L140 132 M204 108 L180 132 M216 108 L192 132 M228 108 L204 132"/></g>
+          <g stroke="var(--fg)" stroke-width="2"><path d="M64 132 V146 M128 132 V146 M192 132 V146"/></g>
+          <!-- wind turbine -->
+          <path d="M466 146 L468 92 H472 L474 146 Z" fill="var(--fg)"/>
+          <g class="blades" fill="var(--fg)">
+            <path d="M470 92 L466 44 L474 44 Z"/><path d="M470 92 L513 112 L509 119 Z"/><path d="M470 92 L427 112 L431 119 Z"/>
+          </g>
+          <circle cx="470" cy="92" r="5" fill="#12B76A"/>
+          <!-- CO2 injection well -->
+          <rect x="314" y="118" width="16" height="30" rx="2" fill="var(--fg)"/>
+          <rect x="306" y="112" width="32" height="8" rx="2" fill="var(--fg)"/>
+          <path d="M322 148 V300" stroke="var(--fg)" stroke-width="3.5" stroke-linecap="round"/>
+          <path class="flow" d="M322 152 V298" stroke="#12B76A" stroke-width="2" fill="none"/>
+          <g fill="var(--surface)" opacity=".9"><circle cx="300" cy="300" r="4"/><circle cx="346" cy="296" r="5"/><circle cx="282" cy="310" r="3"/><circle cx="364" cy="310" r="3.5"/><circle cx="322" cy="314" r="4"/></g>
+          <g font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--fg)">
+            <text x="40" y="98">SOLAR PV</text>
+            <text x="438" y="34">WIND</text>
+            <text x="276" y="102">CO₂ INJECTION</text>
+            <text x="20" y="250" fill="var(--muted)">CAP ROCK / SEAL</text>
+            <text x="20" y="306">STORAGE FORMATION</text>
+            <text x="20" y="196" fill="var(--muted)">OVERBURDEN</text>
+          </g>
+          <g font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--muted)">
+            <text x="532" y="166" text-anchor="end">0 m</text>
+            <text x="532" y="262" text-anchor="end">800 m</text>
+            <text x="532" y="390" text-anchor="end">1,500 m TVD</text>
+          </g>
+        </svg>
+        <figcaption class="fig-cap"><span>Schematic: renewable generation and geological CO₂ storage</span><span>Not to scale</span></figcaption>
+      </figure>
+
+      <figure class="section-figure" style="margin:0" data-dept="rca" hidden>
+        <svg viewBox="0 0 560 420" role="img" aria-label="Fishbone cause-and-effect diagram for a compressor trip, with one cause under Machine highlighted as the root cause">
+          <rect x="0" y="0" width="560" height="420" rx="18" fill="var(--surface)"/>
+          <g stroke="var(--fg)" stroke-width="3" stroke-linecap="round" fill="none">
+            <path d="M40 210 H420"/>
+            <path d="M150 210 L70 90"/><path d="M270 210 L190 90"/><path d="M390 210 L310 90"/>
+            <path d="M150 210 L70 330"/><path d="M270 210 L190 330"/><path d="M390 210 L310 330"/>
+          </g>
+          <g stroke="var(--muted)" stroke-width="2" stroke-linecap="round">
+            <path d="M122 168 H94"/><path d="M94 126 H66"/>
+            <path d="M242 168 H214"/><path d="M214 126 H186"/>
+            <path d="M362 168 H334"/>
+            <path d="M122 252 H94"/><path d="M94 294 H66"/>
+            <path d="M242 252 H214"/><path d="M214 294 H186"/>
+            <path d="M362 252 H334"/><path d="M334 294 H306"/>
+          </g>
+          <path d="M334 126 H300" stroke="#12B76A" stroke-width="3.5" stroke-linecap="round"/>
+          <circle cx="296" cy="126" r="7" fill="#12B76A"/>
+          <circle cx="296" cy="126" r="13" fill="none" stroke="#12B76A" stroke-width="2" opacity=".5"/>
+          <rect x="420" y="176" width="120" height="68" rx="10" fill="var(--fg)"/>
+          <g font-family="IBM Plex Mono, monospace">
+            <text x="480" y="202" text-anchor="middle" font-size="10" fill="var(--surface)" opacity=".75">EFFECT</text>
+            <text x="480" y="224" text-anchor="middle" font-size="12" fill="var(--surface)">COMPRESSOR TRIP</text>
+          </g>
+          <g font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--fg)" text-anchor="middle">
+            <text x="70" y="76">PEOPLE</text><text x="190" y="76">METHODS</text><text x="310" y="76">MACHINE</text>
+            <text x="70" y="352">MATERIALS</text><text x="190" y="352">MEASUREMENT</text><text x="310" y="352">ENVIRONMENT</text>
+          </g>
+          <text x="282" y="106" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" font-weight="500" fill="var(--green-ink)">ROOT CAUSE</text>
+        </svg>
+        <figcaption class="fig-cap"><span>Example fishbone: compressor trip traced to shaft misalignment</span><span>Illustrative</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="strip">
+      <div class="wrap strip-row" data-dept="oil">
+        <div><b>Subsurface</b>Geology, petrophysics, reservoir</div>
+        <div><b>Production</b>Well performance and uplift</div>
+        <div><b>Pipelines</b>Metering and commissioning</div>
+        <div><b>Delivery</b>Project management and RCA</div>
+      </div>
+      <div class="wrap strip-row" data-dept="energy" hidden>
+        <div><b>Strategy</b>Decarbonisation roadmaps</div>
+        <div><b>Carbon</b>CCUS and emissions reduction</div>
+        <div><b>Renewables</b>Solar, wind and storage</div>
+        <div><b>Subsurface</b>Geothermal and CO₂ storage</div>
+      </div>
+      <div class="wrap strip-row" data-dept="rca" hidden>
+        <div><b>Equipment</b>Rotating and static failures</div>
+        <div><b>Integrity</b>Pipeline leaks and corrosion</div>
+        <div><b>Production</b>Unplanned losses and trips</div>
+        <div><b>Safety</b>Process incident investigation</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="depts" id="departments" aria-labelledby="depts-label">
+    <div class="wrap">
+      <div class="eyebrow" id="depts-label">Our departments</div>
+      <div class="depts-grid">
+        <button class="dept-card" type="button" data-set="oil" aria-pressed="true">
+          <span class="di"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3 4.5 6 7.6 6 11a6 6 0 0 1-12 0c0-3.4 3-6.5 6-11z"/></svg></span>
+          <span><h2>Oil &amp; Gas</h2><p>Subsurface, reservoir, production, pipeline metering and commissioning, project management and RCA.</p></span>
+          <span class="state" data-state>Viewing</span>
+        </button>
+        <button class="dept-card" type="button" data-set="energy" aria-pressed="false">
+          <span class="di"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span>
+          <span><h2>New Energy / Energy Transition</h2><p>Decarbonisation strategy, CCUS, geothermal, solar, wind, storage and hydrogen.</p></span>
+          <span class="state" data-state>View</span>
+        </button>
+        <button class="dept-card" type="button" data-set="rca" aria-pressed="false">
+          <span class="di"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v3l2 2"/></svg></span>
+          <span><h2>Root Cause Analysis</h2><p>Failure and incident investigations, reliability studies and corrective action programmes.</p></span>
+          <span class="state" data-state>View</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div data-dept="oil" id="dept-oil">
+
+  <section class="block" id="consulting">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <div class="eyebrow">Engineering consultancy</div>
+          <h2>Projects delivered on plan. Failures understood at the root.</h2>
+        </div>
+        <p>Two disciplines run through every TIS engagement. We manage scope, schedule and cost to an agreed baseline, and when something fails we find the cause that stops it happening again.</p>
+      </div>
+      <div class="pair">
+        <article class="pane dark">
+          <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M7 14h4M7 17h8"/></svg></div>
+          <h3>Project Management</h3>
+          <p class="muted">End-to-end management of oil and gas projects, from feasibility and FEED through execution, commissioning and handover to operations.</p>
+          <ul>
+            <li>Scope definition, WBS and integrated schedules</li>
+            <li>Cost estimating, budget control and earned value reporting</li>
+            <li>Contractor and vendor management, interface control</li>
+            <li>HSE planning, risk registers and stage-gate reviews</li>
+          </ul>
+          <div class="tags"><span class="tag">FEED</span><span class="tag">EPC oversight</span><span class="tag">EVM</span><span class="tag">Stage-gate</span></div>
+        </article>
+        <article class="pane">
+          <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v3l2 2"/></svg></div>
+          <h3>Root Cause Analysis</h3>
+          <p class="muted">Structured investigation of equipment failures, production losses, metering discrepancies and process incidents, ending in corrective actions you can track.</p>
+          <ul>
+            <li>Evidence collection, interviews and timeline reconstruction</li>
+            <li>5-Why, fishbone (Ishikawa) and fault tree analysis</li>
+            <li>Failure mode review for rotating and static equipment</li>
+            <li>CAPA plans with owners, deadlines and verification</li>
+          </ul>
+          <div class="tags"><span class="tag">5-Why</span><span class="tag">Ishikawa</span><span class="tag">FTA</span><span class="tag">FMEA</span><span class="tag">CAPA</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="technical" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <div class="eyebrow">Technical services</div>
+          <h2>Every interval of the asset, logged top to bottom.</h2>
+        </div>
+        <p>Our technical services follow the hydrocarbon from the rock it sits in to the meter that measures its sale. Each service can be engaged on its own or as part of an integrated study.</p>
+      </div>
+
+      <div class="log">
+        <div class="log-row">
+          <div class="depth"><span class="bar" style="background:var(--strata-3)"></span>Subsurface</div>
+          <div>
+            <h3>Geological &amp; Subsurface Studies</h3>
+            <p class="desc">Building a reliable picture of what lies below: structure, stratigraphy, rock properties and uncertainty, to support exploration, field development and well placement.</p>
+          </div>
+          <div class="deliv"><b>Deliverables</b><ul>
+            <li>Seismic interpretation and structural mapping</li>
+            <li>Well log correlation and petrophysical evaluation</li>
+            <li>Static 3D geological models and volumetrics (STOIIP / GIIP)</li>
+            <li>Well proposals and geosteering support</li>
+          </ul></div>
+        </div>
+        <div class="log-row">
+          <div class="depth"><span class="bar" style="background:var(--green)"></span>Reservoir</div>
+          <div>
+            <h3>Reservoir Engineering</h3>
+            <p class="desc">Understanding how the reservoir behaves under production, so you can forecast with confidence and choose the development plan that recovers the most at the right cost.</p>
+          </div>
+          <div class="deliv"><b>Deliverables</b><ul>
+            <li>PVT analysis and fluid characterisation</li>
+            <li>Pressure transient analysis and well test interpretation</li>
+            <li>Material balance and decline curve analysis</li>
+            <li>Dynamic simulation, reserves estimates and field development plans</li>
+          </ul></div>
+        </div>
+        <div class="log-row">
+          <div class="depth"><span class="bar" style="background:var(--strata-4)"></span>Wellbore</div>
+          <div>
+            <h3>Production Enhancement</h3>
+            <p class="desc">Finding and removing the constraints that hold wells and facilities below their potential, from near-wellbore damage to undersized surface equipment.</p>
+          </div>
+          <div class="deliv"><b>Deliverables</b><ul>
+            <li>Nodal analysis and well performance reviews</li>
+            <li>Artificial lift selection and optimisation (ESP, gas lift, rod pump)</li>
+            <li>Stimulation candidate selection: acidising and fracturing</li>
+            <li>Water and sand management, debottlenecking studies</li>
+          </ul></div>
+        </div>
+        <div class="log-row">
+          <div class="depth"><span class="bar" style="background:var(--strata-2)"></span>Surface</div>
+          <div>
+            <h3>Pipeline Metering</h3>
+            <p class="desc">Accurate, auditable measurement for allocation and custody transfer. We design, review and verify metering systems so that every barrel and every standard cubic metre is accounted for.</p>
+          </div>
+          <div class="deliv"><b>Deliverables</b><ul>
+            <li>Metering system design and technology selection (ultrasonic, Coriolis, orifice, turbine)</li>
+            <li>Prover and meter calibration, uncertainty analysis</li>
+            <li>Flow computer configuration and audit</li>
+            <li>Mismeasurement investigations and allocation reviews</li>
+          </ul></div>
+        </div>
+        <div class="log-row">
+          <div class="depth"><span class="bar" style="background:var(--strata-1);border:1px solid var(--line)"></span>Surface</div>
+          <div>
+            <h3>Pipeline Commissioning</h3>
+            <p class="desc">Taking a newly built or repaired pipeline safely from mechanical completion to first flow, with documented test results at every step. The full sequence is set out below.</p>
+          </div>
+          <div class="deliv"><b>Deliverables</b><ul>
+            <li>Commissioning procedures and test packs</li>
+            <li>Cleaning, gauging, hydrotest and drying supervision</li>
+            <li>Nitrogen purging and line packing</li>
+            <li>Pre-start-up safety review and handover dossier</li>
+          </ul></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block band" id="commissioning">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <div class="eyebrow">Pipeline commissioning sequence</div>
+          <h2>Eight steps from mechanical completion to first flow.</h2>
+        </div>
+        <p>Every TIS commissioning project follows this sequence. Each step is signed off before the next begins, and the records go into the handover dossier.</p>
+      </div>
+      <ol class="steps" style="list-style:none;margin:0;padding:0">
+        <li class="step"><span class="n">01</span><h3>Mechanical completion</h3><p>Walkdowns, punch-list closure and verification against as-built drawings.</p></li>
+        <li class="step"><span class="n">02</span><h3>Cleaning &amp; gauging</h3><p>Pigging runs to remove construction debris and confirm bore with a gauging plate.</p></li>
+        <li class="step"><span class="n">03</span><h3>Hydrostatic testing</h3><p>Pressure test held for the specified period to prove strength and leak tightness.</p></li>
+        <li class="step"><span class="n">04</span><h3>Dewatering</h3><p>Displacement of test water by pig trains and safe disposal of the water.</p></li>
+        <li class="step"><span class="n">05</span><h3>Drying</h3><p>Air or vacuum drying until the line meets the specified dew point.</p></li>
+        <li class="step"><span class="n">06</span><h3>Nitrogen purging</h3><p>Inerting the line to remove oxygen before hydrocarbons are introduced.</p></li>
+        <li class="step"><span class="n">07</span><h3>Pre-start-up review</h3><p>PSSR covering instruments, safety systems, metering and operating procedures.</p></li>
+        <li class="step"><span class="n">08</span><h3>Line packing &amp; first flow</h3><p>Controlled introduction of product, stabilisation and handover to operations.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="standards">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <div class="eyebrow">Codes &amp; standards</div>
+          <h2>Built on the standards your auditors use.</h2>
+        </div>
+        <p>Our studies, designs and test procedures reference the international codes that govern measurement, pipeline integrity and project delivery.</p>
+      </div>
+      <div class="standards">
+        <div class="std"><code>API MPMS</code><span>Manual of Petroleum Measurement Standards</span></div>
+        <div class="std"><code>AGA 3 / 7 / 9</code><span>Gas measurement: orifice, turbine, ultrasonic</span></div>
+        <div class="std"><code>ISO 5167</code><span>Flow measurement by differential pressure devices</span></div>
+        <div class="std"><code>ASME B31.4 / B31.8</code><span>Liquid and gas transmission pipelines</span></div>
+        <div class="std"><code>API RP 1110</code><span>Pressure testing of steel pipelines</span></div>
+        <div class="std"><code>PMI PMBOK</code><span>Project management body of knowledge</span></div>
+      </div>
+    </div>
+  </section>
+
+  </div>
+
+  <div data-dept="energy" id="dept-energy" hidden>
+    <section class="block" id="transition">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <div class="eyebrow">Energy transition consultancy</div>
+            <h2>A credible path to lower emissions, planned like any other project.</h2>
+          </div>
+          <p>We start with a measured baseline and end with projects that are funded, built and verified. The same project controls and root cause discipline we use in oil and gas keep transition work on budget.</p>
+        </div>
+        <div class="pair">
+          <article class="pane dark">
+            <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18M6 16l4-5 3 3 5-7"/><path d="M15 7h3v3"/></svg></div>
+            <h3>Decarbonisation Strategy</h3>
+            <p class="muted">Roadmaps that turn emissions targets into a ranked list of projects with costs, timelines and abatement for each.</p>
+            <ul>
+              <li>Scope 1 and 2 emissions baselines and inventories</li>
+              <li>Energy audits and efficiency opportunities</li>
+              <li>Marginal abatement cost curves and project ranking</li>
+              <li>Net-zero roadmaps, business cases and funding support</li>
+            </ul>
+            <div class="tags"><span class="tag">GHG baseline</span><span class="tag">MACC</span><span class="tag">Net-zero roadmap</span></div>
+          </article>
+          <article class="pane">
+            <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M8 21h8M12 7c-3 0-5 2.5-5 5.5S9 21 12 21s5-5.5 5-8.5S15 7 12 7z"/><path d="M4 4l3 3M20 4l-3 3"/></svg></div>
+            <h3>Methane &amp; Flaring Reduction</h3>
+            <p class="muted">Practical cuts to emissions on existing oil and gas assets, often the fastest and lowest-cost abatement available.</p>
+            <ul>
+              <li>Leak detection and repair (LDAR) programmes</li>
+              <li>Flare gas recovery and routine flaring elimination</li>
+              <li>Venting reduction and equipment replacement studies</li>
+              <li>Measurement, reporting and verification (MRV) of methane</li>
+            </ul>
+            <div class="tags"><span class="tag">LDAR</span><span class="tag">Flare gas recovery</span><span class="tag">MRV</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="energy-tech" style="padding-top:0">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <div class="eyebrow">New energy technical services</div>
+            <h2>Low-carbon projects, from the sky to the storage formation.</h2>
+          </div>
+          <p>Our subsurface and facilities engineers apply their oil and gas experience to the technologies that will replace and complement it.</p>
+        </div>
+        <div class="log">
+          <div class="log-row">
+            <div class="depth"><span class="bar" style="background:var(--strata-1);border:1px solid var(--line)"></span>Surface</div>
+            <div>
+              <h3>Solar PV &amp; Wind</h3>
+              <p class="desc">Renewable power for grids, industrial sites and remote oilfield facilities, including hybrid systems that cut diesel and gas use for power generation.</p>
+            </div>
+            <div class="deliv"><b>Deliverables</b><ul>
+              <li>Site assessment and energy yield studies</li>
+              <li>Hybrid power design for off-grid and oilfield sites</li>
+              <li>Owner's engineer and EPC oversight</li>
+              <li>Testing, commissioning and performance verification</li>
+            </ul></div>
+          </div>
+          <div class="log-row">
+            <div class="depth"><span class="bar" style="background:var(--strata-2)"></span>Surface</div>
+            <div>
+              <h3>Energy Storage</h3>
+              <p class="desc">Battery systems that firm up renewable output, shave peak demand and provide backup power for critical loads.</p>
+            </div>
+            <div class="deliv"><b>Deliverables</b><ul>
+              <li>Sizing and use-case studies (peak shaving, firming, backup)</li>
+              <li>Technology and vendor selection</li>
+              <li>Integration with solar, wind and existing generation</li>
+              <li>Safety, commissioning and handover</li>
+            </ul></div>
+          </div>
+          <div class="log-row">
+            <div class="depth"><span class="bar" style="background:var(--strata-3)"></span>Facilities</div>
+            <div>
+              <h3>Hydrogen</h3>
+              <p class="desc">Feasibility and concept studies for green and blue hydrogen, from electrolyser sizing to storage, transport and end use.</p>
+            </div>
+            <div class="deliv"><b>Deliverables</b><ul>
+              <li>Green and blue hydrogen feasibility studies</li>
+              <li>Electrolyser and balance-of-plant concept design</li>
+              <li>Storage, pipeline and blending assessments</li>
+              <li>Levelised cost of hydrogen (LCOH) analysis</li>
+            </ul></div>
+          </div>
+          <div class="log-row">
+            <div class="depth"><span class="bar" style="background:var(--green)"></span>Subsurface</div>
+            <div>
+              <h3>Carbon Capture &amp; Storage (CCUS)</h3>
+              <p class="desc">Finding, proving and monitoring safe places to store CO₂ underground, using the same geology and reservoir engineering skills that find oil and gas.</p>
+            </div>
+            <div class="deliv"><b>Deliverables</b><ul>
+              <li>Storage site screening and characterisation</li>
+              <li>Storage capacity, injectivity and cap rock integrity studies</li>
+              <li>Depleted field and saline aquifer evaluation</li>
+              <li>CO₂ pipeline design and monitoring (MMV) plans</li>
+            </ul></div>
+          </div>
+          <div class="log-row">
+            <div class="depth"><span class="bar" style="background:var(--strata-5)"></span>Subsurface</div>
+            <div>
+              <h3>Geothermal</h3>
+              <p class="desc">Heat and power from the subsurface, including repurposing of mature oil and gas wells for geothermal use.</p>
+            </div>
+            <div class="deliv"><b>Deliverables</b><ul>
+              <li>Geothermal resource assessment and heat-in-place estimates</li>
+              <li>Reservoir modelling and well design</li>
+              <li>Well repurposing studies for mature fields</li>
+              <li>Surface plant concept selection</li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block band" id="transition-steps">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <div class="eyebrow">How a transition project runs</div>
+            <h2>Five stages from baseline to verified reductions.</h2>
+          </div>
+          <p>Each stage produces a decision document, so you can stop, adjust or continue with full information.</p>
+        </div>
+        <ol class="steps five" style="list-style:none;margin:0;padding:0">
+          <li class="step"><span class="n">01</span><h3>Baseline</h3><p>Measure current energy use and emissions across the asset or portfolio.</p></li>
+          <li class="step"><span class="n">02</span><h3>Roadmap</h3><p>Identify and rank abatement options by cost, impact and timing.</p></li>
+          <li class="step"><span class="n">03</span><h3>Feasibility</h3><p>Concept design, cost estimates and business case for priority projects.</p></li>
+          <li class="step"><span class="n">04</span><h3>Execution</h3><p>Project management, EPC oversight, commissioning and handover.</p></li>
+          <li class="step"><span class="n">05</span><h3>Verification</h3><p>Monitor, report and verify the reductions achieved.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block" id="energy-standards">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <div class="eyebrow">Codes &amp; standards</div>
+            <h2>Reductions that stand up to verification.</h2>
+          </div>
+          <p>Our transition work references the frameworks used by regulators, lenders and carbon registries.</p>
+        </div>
+        <div class="standards">
+          <div class="std"><code>GHG Protocol</code><span>Corporate emissions accounting and reporting</span></div>
+          <div class="std"><code>ISO 14064</code><span>Greenhouse gas quantification and verification</span></div>
+          <div class="std"><code>ISO 50001</code><span>Energy management systems</span></div>
+          <div class="std"><code>ISO 27914</code><span>Geological storage of carbon dioxide</span></div>
+          <div class="std"><code>OGMP 2.0</code><span>Oil and gas methane reporting framework</span></div>
+          <div class="std"><code>IEC 62446</code><span>PV system testing and commissioning</span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div data-dept="rca" id="dept-rca" hidden>
+    <section class="block" id="rca-services">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <div class="eyebrow">Root cause analysis department</div>
+            <h2>Investigate after a failure. Prevent the next one.</h2>
+          </div>
+          <p>We work in two modes. After an event, we lead a structured investigation to the true cause. Before one, we review your equipment and processes to find weak points while they are still cheap to fix.</p>
+        </div>
+        <div class="pair">
+          <article class="pane dark">
+            <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg></div>
+            <h3>Failure &amp; Incident Investigation</h3>
+            <p class="muted">Independent, evidence-based investigation after a failure, trip, leak or process safety event.</p>
+            <ul>
+              <li>Rapid site mobilisation and evidence preservation</li>
+              <li>Interviews, data review and timeline reconstruction</li>
+              <li>Cause analysis with 5-Why, fishbone and fault tree methods</li>
+              <li>Investigation report with findings and corrective actions</li>
+            </ul>
+            <div class="tags"><span class="tag">5-Why</span><span class="tag">Ishikawa</span><span class="tag">Fault tree</span><span class="tag">Timeline</span></div>
+          </article>
+          <article class="pane">
+            <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <h3>Reliability &amp; Prevention</h3>
+            <p class="muted">Proactive studies that find and remove failure causes before they cost production or put people at risk.</p>
+            <ul>
+              <li>Failure mode and effects analysis (FMEA / FMECA)</li>
+              <li>Bad actor reviews of repeat-failure equipment</li>
+              <li>Reliability data analysis and maintenance strategy review</li>
+              <li>RCA training and investigation procedures for your team</li>
+            </ul>
+            <div class="tags"><span class="tag">FMEA</span><span class="tag">Bad actors</span><span class="tag">RCM</span><span class="tag">Training</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="rca-areas" style="padding-top:0">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <div class="eyebrow">What we investigate</div>
+            <h2>Failures across the whole asset, below ground and above it.</h2>
+          </div>
+          <p>Our investigators are engineers from the disciplines involved, so the analysis is grounded in how the equipment and the process actually work.</p>
+        </div>
+        <div class="log">
+          <div class="log-row">
+            <div class="depth"><span class="bar" style="background:var(--strata-4)"></span>Wellbore</div>
+            <div>
+              <h3>Well &amp; Production Losses</h3>
+              <p class="desc">Sudden or gradual drops in well output, artificial lift failures and unplanned shut-ins.</p>
+            </div>
+            <div class="deliv"><b>Typical cases</b><ul>
+              <li>Short ESP run life and repeat pump failures</li>
+              <li>Scale, wax, sand or water breakthrough</li>
+              <li>Well integrity and annulus pressure issues</li>
+            </ul></div>
+          </div>
+          <div class="log-row">
+            <div class="depth"><span class="bar" style="background:var(--strata-3)"></span>Facilities</div>
+            <div>
+              <h3>Rotating &amp; Static Equipment</h3>
+              <p class="desc">Failures of the machines and vessels that keep a facility running.</p>
+            </div>
+            <div class="deliv"><b>Typical cases</b><ul>
+              <li>Pump, compressor and turbine trips and seal failures</li>
+              <li>Bearing, vibration and alignment problems</li>
+              <li>Vessel, exchanger and valve failures</li>
+            </ul></div>
+          </div>
+          <div class="log-row">
+            <div class="depth"><span class="bar" style="background:var(--strata-2)"></span>Pipelines</div>
+            <div>
+              <h3>Pipeline Integrity &amp; Metering</h3>
+              <p class="desc">Leaks, ruptures and measurement errors in pipelines and custody transfer systems.</p>
+            </div>
+            <div class="deliv"><b>Typical cases</b><ul>
+              <li>Internal and external corrosion, erosion and cracking</li>
+              <li>Leaks, ruptures and third-party damage</li>
+              <li>Meter drift, allocation imbalances and mismeasurement</li>
+            </ul></div>
+          </div>
+          <div class="log-row">
+            <div class="depth"><span class="bar" style="background:var(--green)"></span>Process safety</div>
+            <div>
+              <h3>Process &amp; Safety Incidents</h3>
+              <p class="desc">Loss of containment, fires, near misses and safety system failures, investigated with the human and organisational factors in view.</p>
+            </div>
+            <div class="deliv"><b>Typical cases</b><ul>
+              <li>Loss of primary containment events</li>
+              <li>Safety instrumented system and trip failures</li>
+              <li>Procedure, competence and management system gaps</li>
+            </ul></div>
+          </div>
+          <div class="log-row">
+            <div class="depth"><span class="bar" style="background:var(--strata-1);border:1px solid var(--line)"></span>New energy</div>
+            <div>
+              <h3>Renewable &amp; Storage Assets</h3>
+              <p class="desc">Underperformance and failures on solar, wind and battery installations.</p>
+            </div>
+            <div class="deliv"><b>Typical cases</b><ul>
+              <li>Inverter and string failures, PV yield shortfalls</li>
+              <li>Wind turbine gearbox and blade issues</li>
+              <li>Battery system faults and thermal events</li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block band" id="rca-steps">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <div class="eyebrow">Our investigation process</div>
+            <h2>Six steps from the event to a closed-out action.</h2>
+          </div>
+          <p>Every investigation follows the same sequence, so findings are traceable and the corrective actions are checked to be working.</p>
+        </div>
+        <ol class="steps six" style="list-style:none;margin:0;padding:0">
+          <li class="step"><span class="n">01</span><h3>Preserve evidence</h3><p>Secure failed parts, data, logs and records before they are lost or altered.</p></li>
+          <li class="step"><span class="n">02</span><h3>Define the problem</h3><p>Agree what happened, its impact and the scope of the investigation.</p></li>
+          <li class="step"><span class="n">03</span><h3>Build the timeline</h3><p>Reconstruct the sequence of events from data, inspections and interviews.</p></li>
+          <li class="step"><span class="n">04</span><h3>Analyse causes</h3><p>Work from symptoms to physical, human and organisational root causes.</p></li>
+          <li class="step"><span class="n">05</span><h3>Corrective actions</h3><p>Set actions with owners and deadlines that remove each root cause.</p></li>
+          <li class="step"><span class="n">06</span><h3>Verify &amp; close out</h3><p>Confirm the actions are in place and the failure has not returned.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block" id="rca-standards">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <div class="eyebrow">Methods &amp; standards</div>
+            <h2>Recognised methods, defensible findings.</h2>
+          </div>
+          <p>Our investigations follow international standards, so the findings hold up with management, insurers and regulators.</p>
+        </div>
+        <div class="standards">
+          <div class="std"><code>IEC 62740</code><span>Root cause analysis</span></div>
+          <div class="std"><code>IEC 60812</code><span>Failure modes and effects analysis (FMEA)</span></div>
+          <div class="std"><code>IEC 61025</code><span>Fault tree analysis (FTA)</span></div>
+          <div class="std"><code>API RP 585</code><span>Pressure equipment integrity incident investigation</span></div>
+          <div class="std"><code>API RP 754</code><span>Process safety performance indicators</span></div>
+          <div class="std"><code>ISO 14224</code><span>Reliability and maintenance data collection</span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="block" id="contact" style="padding-top:0">
+    <div class="wrap contact">
+      <div class="contact-info">
+        <div class="eyebrow">Contact</div>
+        <h2>Tell us about your asset.</h2>
+        <p style="color:var(--muted);max-width:46ch">Share the field, pipeline or problem you are working on. An engineer will review it and reply with a proposed scope.</p>
+        <div class="detail"><span class="k">Email</span><a class="v" href="mailto:ibrahim.abdellatif1@outlook.com">ibrahim.abdellatif1@outlook.com</a></div>
+        <div class="detail"><span class="k">WhatsApp</span><a class="v" href="https://wa.me/31644892169" target="_blank" rel="noopener">+31 6 44892169</a></div>
+        <div class="detail"><span class="k">Phone</span><a class="v" href="tel:+31644892169">+31 6 44892169</a></div>
+        <div class="detail"><span class="k">Office</span><span class="v">Doornhoek 3745A<br>5465 TA Veghel<br><span>The Netherlands</span></span></div>
+        <div class="detail"><span class="k">KvK number (Dutch Chamber of Commerce)</span><span class="v">96999004</span></div>
+        <div class="detail"><span class="k">VAT number (BTW)</span><span class="v">NL301251733B01</span></div>
+      </div>
+
+      <form id="enquiry" novalidate>
+        <div class="field"><label for="f-name">Full name</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" autocomplete="organization"></div>
+        <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="f-service">Service</label>
+          <select id="f-service" name="service">
+            <option>Project management</option>
+            <option>Root cause analysis</option>
+            <option>Geological &amp; subsurface studies</option>
+            <option>Reservoir engineering</option>
+            <option>Production enhancement</option>
+            <option>Pipeline metering</option>
+            <option>Pipeline commissioning</option>
+            <option>Decarbonisation strategy</option>
+            <option>Methane &amp; flaring reduction</option>
+            <option>Solar PV &amp; wind</option>
+            <option>Energy storage</option>
+            <option>Hydrogen</option>
+            <option>Carbon capture &amp; storage (CCUS)</option>
+            <option>Geothermal</option>
+            <option>Not sure yet</option>
+          </select></div>
+        <div class="field full"><label for="f-msg">Project details</label><textarea id="f-msg" name="message" placeholder="Field or pipeline, location, current issue, timeline" required></textarea></div>
+        <div class="form-foot">
+          <button class="btn primary" type="submit">Send enquiry</button>
+          <p class="note" id="f-note" role="status">We reply within two working days.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<a class="wa mail" href="mailto:ibrahim.abdellatif1@outlook.com?subject=Enquiry%20from%20TIS%20website" aria-label="Email TIS at ibrahim.abdellatif1@outlook.com">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg>
+  <span>Email us</span>
+</a>
+<a class="wa" href="https://wa.me/31644892169" target="_blank" rel="noopener" aria-label="Chat with TIS on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#06210F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 8.5c0 3.5 2.5 6.5 6.5 6.5l1-1.6-2-1-1 .9c-1-.4-2.4-1.8-2.8-2.8l.9-1-1-2z" fill="#06210F" stroke-width="1"/></svg>
+  <span>Chat on WhatsApp</span>
+</a>
+
+<div id="tis-admin" hidden role="dialog" aria-modal="true" aria-label="TIS admin panel">
+  <section class="a-login" id="adm-login-view">
+    <form class="a-card" id="adm-login-form" autocomplete="off" novalidate>
+      <div style="display:flex;align-items:center;gap:12px">
+        <span class="a-mark" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 100 100"><path d="M60 8 L24 58 H52 Z" fill="#FFFFFF"/><path d="M48 42 H76 L40 92 Z" fill="#0B1F33"/></svg></span>
+        <h2>TIS Admin</h2>
+      </div>
+      <p>Enter the admin passcode to see website requests.</p>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <label for="adm-pass">Passcode</label>
+        <input id="adm-pass" type="password" autocomplete="current-password">
+      </div>
+      <button class="a-btn primary" type="submit" id="adm-login-btn">Open requests</button>
+      <button class="a-btn" type="button" id="adm-back-1">Back to website</button>
+      <div class="a-msg" id="adm-login-msg" role="status"></div>    </form>
+  </section>
+
+  <div id="adm-app-view" hidden>
+    <div class="a-head">
+      <div class="a-demo" id="adm-demo" hidden>Sample data only. These are example requests, not real ones, and changes are not saved.</div>
+      <div class="a-wrap a-bar">
+        <div class="a-brand">
+          <span class="a-mark" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 100 100"><path d="M60 8 L24 58 H52 Z" fill="#FFFFFF"/><path d="M48 42 H76 L40 92 Z" fill="#0B1F33"/></svg></span>
+          <div><b>Requests</b><span id="adm-updated">Loading…</span></div>
+        </div>
+        <div class="a-actions">
+          <button class="a-btn" type="button" id="adm-refresh">Refresh</button>
+          <button class="a-btn" type="button" id="adm-export">Export CSV</button>
+          <button class="a-btn" type="button" id="adm-lock">Lock</button>
+          <button class="a-btn" type="button" id="adm-back-2">Back to website</button>
+        </div>
+      </div>
+    </div>
+    <div class="a-wrap a-main">
+      <div class="a-stats">
+        <div class="a-stat"><div class="a-k">Total</div><div class="v" id="adm-s-total">0</div></div>
+        <div class="a-stat"><div class="a-k">New</div><div class="v" id="adm-s-new" style="color:var(--a-new)">0</div></div>
+        <div class="a-stat"><div class="a-k">In progress</div><div class="v" id="adm-s-prog" style="color:var(--a-prog)">0</div></div>
+        <div class="a-stat"><div class="a-k">Done</div><div class="v" id="adm-s-done" style="color:var(--a-done)">0</div></div>
+      </div>
+      <div class="a-filters">
+        <div><label for="adm-q">Search</label><input id="adm-q" type="search" placeholder="Name, company, email or message"></div>
+        <div><label for="adm-fs">Status</label>
+          <select id="adm-fs"><option value="">All statuses</option><option value="new">New</option><option value="in_progress">In progress</option><option value="done">Done</option></select></div>
+        <div><label for="adm-fd">Department</label>
+          <select id="adm-fd"><option value="">All departments</option><option value="oil">Oil &amp; Gas</option><option value="energy">New Energy</option><option value="rca">Root Cause Analysis</option></select></div>
+      </div>
+      <div class="a-layout">
+        <div class="a-list" id="adm-list" aria-label="Requests"></div>
+        <aside class="a-detail" id="adm-detail" aria-live="polite"><div class="a-empty">Select a request to see its details.</div></aside>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 TIS New Energy · Total Integrated Solutions · <button type="button" class="admin-link" id="adm-open">Admin</button></span>
+    <span>Consultancy and engineering services for oil, gas and new energy</span>
+    <span>KvK 96999004 · VAT NL301251733B01</span>
+  </div>
+</footer>
+
+<script>
+/* Translations: [Dutch, Romanian, Russian]. English is the source text in the page. */
+var TIS_I18N={
+"TIS New Energy, home":["TIS New Energy, startpagina","TIS New Energy, pagina principală","TIS New Energy, главная"],
+"Language":["Taal","Limbă","Язык"],
+"Choose department":["Kies een afdeling","Alegeți departamentul","Выберите направление"],
+"Oil & Gas":["Olie & Gas","Petrol și gaze","Нефть и газ"],
+"New Energy":["Nieuwe Energie","Energie nouă","Новая энергетика"],
+"Root Cause Analysis":["Root Cause Analyse","Analiza cauzei principale","Анализ первопричин"],
+"Main":["Hoofdmenu","Meniu principal","Главное меню"],
+"Request a proposal":["Offerte aanvragen","Solicitați o ofertă","Запросить предложение"],
+"Total Integrated Solutions · Oil, gas & new energy":["Total Integrated Solutions · Olie, gas & nieuwe energie","Total Integrated Solutions · Petrol, gaze și energie nouă","Total Integrated Solutions · Нефть, газ и новая энергетика"],
+"From the reservoir to the":["Van het reservoir tot de","De la zăcământ la","От пласта до"],
+"custody meter":["fiscale meter","contorul fiscal","коммерческого узла учёта"],
+", one engineering team.":[", één engineeringteam.",", o singură echipă de inginerie."," — одна инженерная команда."],
+"Engineering the":["Engineering voor de","Ingineria","Инжиниринг"],
+"energy transition":["energietransitie","tranziției energetice","энергетического перехода"],
+", from strategy to switch-on.":[", van strategie tot inbedrijfstelling.",", de la strategie la punerea în funcțiune."," — от стратегии до запуска."],
+"Find the":["Vind de","Găsiți","Найдите"],
+"real cause":["echte oorzaak","cauza reală","истинную причину"],
+". Stop the failure coming back.":[". Voorkom dat de storing terugkomt.",". Opriți repetarea defectului.",". Не допустите повторения отказа."],
+"The TIS Root Cause Analysis department investigates equipment failures, production losses, metering discrepancies and process incidents across oil, gas and new energy assets. We separate symptoms from causes and deliver corrective actions that last.":["De afdeling Root Cause Analyse van TIS onderzoekt storingen aan apparatuur, productieverliezen, meetafwijkingen en procesincidenten bij olie-, gas- en nieuwe-energie-installaties. We scheiden symptomen van oorzaken en leveren corrigerende maatregelen die blijvend werken.","Departamentul de Analiză a cauzei principale al TIS investighează defectele echipamentelor, pierderile de producție, discrepanțele de măsurare și incidentele de proces în activele de petrol, gaze și energie nouă. Separăm simptomele de cauze și livrăm acțiuni corective durabile.","Отдел анализа первопричин TIS расследует отказы оборудования, потери добычи, расхождения в учёте и технологические инциденты на объектах нефтегазовой отрасли и новой энергетики. Мы отделяем симптомы от причин и предлагаем корректирующие меры с долгосрочным эффектом."],
+"TIS New Energy helps operators and industry cut emissions and add low-carbon capacity: decarbonisation roadmaps, carbon capture and storage, geothermal, solar, wind, storage and hydrogen, delivered with the same engineering discipline we bring to oil and gas.":["TIS New Energy helpt operators en industrie om emissies te verlagen en koolstofarme capaciteit toe te voegen: decarbonisatie-roadmaps, CO₂-afvang en -opslag, geothermie, zon, wind, opslag en waterstof, uitgevoerd met dezelfde technische discipline die we in olie en gas toepassen.","TIS New Energy ajută operatorii și industria să reducă emisiile și să adauge capacitate cu emisii reduse de carbon: foi de parcurs pentru decarbonizare, captarea și stocarea carbonului, geotermie, energie solară, eoliană, stocare și hidrogen, livrate cu aceeași disciplină inginerească pe care o aplicăm în petrol și gaze.","TIS New Energy помогает операторам и промышленности сокращать выбросы и наращивать низкоуглеродные мощности: дорожные карты декарбонизации, улавливание и хранение углерода, геотермальная, солнечная и ветровая энергетика, накопители энергии и водород — с той же инженерной дисциплиной, что и в нефтегазовой отрасли."],
+"TIS provides consultancy and engineering services across the full hydrocarbon value chain: subsurface studies, reservoir and production engineering, pipeline metering and commissioning, backed by disciplined project management and root cause analysis.":["TIS levert consultancy- en engineeringdiensten over de volledige koolwaterstofketen: ondergrondstudies, reservoir- en productie-engineering, pijpleidingmeting en inbedrijfstelling, ondersteund door gedisciplineerd projectmanagement en oorzaakanalyse.","TIS oferă servicii de consultanță și inginerie pe întregul lanț valoric al hidrocarburilor: studii de subsol, ingineria zăcămintelor și a producției, măsurarea și punerea în funcțiune a conductelor, susținute de un management de proiect riguros și de analiza cauzei principale.","TIS оказывает консалтинговые и инженерные услуги по всей цепочке создания стоимости углеводородов: геологические исследования недр, разработка месторождений и инжиниринг добычи, учёт и пусконаладка трубопроводов — на основе дисциплинированного управления проектами и анализа первопричин."],
+"Discuss your project":["Bespreek uw project","Discutați proiectul dvs.","Обсудить проект"],
+"View our services":["Bekijk onze diensten","Vedeți serviciile noastre","Наши услуги"],
+"Cross-section of subsurface layers with a deviated well reaching the reservoir and a pipeline to a metering skid at surface":["Doorsnede van ondergrondse lagen met een afgebogen put naar het reservoir en een pijpleiding naar een meetskid aan de oppervlakte","Secțiune prin straturile subterane cu o sondă deviată care ajunge la zăcământ și o conductă către o unitate de măsurare la suprafață","Разрез пластов с наклонно-направленной скважиной, вскрывающей пласт, и трубопроводом к узлу учёта на поверхности"],
+"METERING SKID":["MEETSKID","UNITATE DE MĂSURARE","УЗЕЛ УЧЁТА"],
+"WELLHEAD":["PUTKOP","CAP DE SONDĂ","УСТЬЕ СКВАЖИНЫ"],
+"OVERBURDEN":["DEKLAAG","STRATE ACOPERITOARE","ПОКРЫВАЮЩИЕ ПОРОДЫ"],
+"SEAL / CAP ROCK":["AFDEKLAAG","ROCĂ ACOPERIȘ","ПОКРЫШКА"],
+"TRANSITION":["OVERGANGSZONE","ZONĂ DE TRANZIȚIE","ПЕРЕХОДНАЯ ЗОНА"],
+"RESERVOIR":["RESERVOIR","ZĂCĂMÂNT","ПЛАСТ-КОЛЛЕКТОР"],
+"BASEMENT":["SOKKEL","FUNDAMENT","ФУНДАМЕНТ"],
+"Schematic: well to pipeline to custody transfer":["Schema: van put via pijpleiding naar fiscale overdracht","Schemă: de la sondă la conductă și transferul fiscal","Схема: от скважины через трубопровод до коммерческого учёта"],
+"Not to scale":["Niet op schaal","Nu la scară","Не в масштабе"],
+"Solar panels and a wind turbine at surface, with a CO2 injection well storing carbon in a deep formation beneath a cap rock":["Zonnepanelen en een windturbine aan de oppervlakte, met een CO2-injectieput die koolstof opslaat in een diepe formatie onder een afdeklaag","Panouri solare și o turbină eoliană la suprafață, cu o sondă de injecție CO2 care stochează carbonul într-o formațiune adâncă sub o rocă acoperiș","Солнечные панели и ветряная турбина на поверхности и скважина закачки CO2, хранящая углерод в глубоком пласте под покрышкой"],
+"SOLAR PV":["ZONNE-PV","FOTOVOLTAIC","СОЛНЕЧНЫЕ ПАНЕЛИ"],
+"WIND":["WIND","EOLIAN","ВЕТЕР"],
+"CO₂ INJECTION":["CO₂-INJECTIE","INJECȚIE CO₂","ЗАКАЧКА CO₂"],
+"CAP ROCK / SEAL":["AFDEKLAAG","ROCĂ ACOPERIȘ","ПОКРЫШКА"],
+"STORAGE FORMATION":["OPSLAGFORMATIE","FORMAȚIUNE DE STOCARE","ПЛАСТ-ХРАНИЛИЩЕ"],
+"Schematic: renewable generation and geological CO₂ storage":["Schema: hernieuwbare opwekking en geologische CO₂-opslag","Schemă: generare regenerabilă și stocare geologică a CO₂","Схема: возобновляемая генерация и геологическое хранение CO₂"],
+"Fishbone cause-and-effect diagram for a compressor trip, with one cause under Machine highlighted as the root cause":["Visgraatdiagram (oorzaak-gevolg) voor een compressortrip, waarbij één oorzaak onder Machine is gemarkeerd als grondoorzaak","Diagramă os de pește (cauză-efect) pentru oprirea unui compresor, cu o cauză din categoria Mașină evidențiată drept cauză principală","Диаграмма «рыбья кость» для аварийного останова компрессора; одна причина в категории «Оборудование» выделена как первопричина"],
+"EFFECT":["GEVOLG","EFECT","СЛЕДСТВИЕ"],
+"COMPRESSOR TRIP":["COMPRESSORTRIP","OPRIRE COMPRESOR","СТОП КОМПРЕССОРА"],
+"PEOPLE":["MENSEN","OAMENI","ПЕРСОНАЛ"],
+"METHODS":["METHODEN","METODE","МЕТОДЫ"],
+"MACHINE":["MACHINE","MAȘINĂ","ОБОРУДОВАНИЕ"],
+"MATERIALS":["MATERIALEN","MATERIALE","МАТЕРИАЛЫ"],
+"MEASUREMENT":["METING","MĂSURARE","ИЗМЕРЕНИЯ"],
+"ENVIRONMENT":["OMGEVING","MEDIU","СРЕДА"],
+"ROOT CAUSE":["GRONDOORZAAK","CAUZĂ PRIMARĂ","ПЕРВОПРИЧИНА"],
+"Example fishbone: compressor trip traced to shaft misalignment":["Voorbeeld visgraat: compressortrip herleid tot een uitlijnfout van de as","Exemplu os de pește: oprirea compresorului cauzată de nealinierea arborelui","Пример «рыбьей кости»: останов компрессора из-за расцентровки вала"],
+"Illustrative":["Ter illustratie","Ilustrativ","Иллюстрация"],
+"Subsurface":["Ondergrond","Subsol","Недра"],
+"Geology, petrophysics, reservoir":["Geologie, petrofysica, reservoir","Geologie, petrofizică, zăcământ","Геология, петрофизика, пласт"],
+"Production":["Productie","Producție","Добыча"],
+"Well performance and uplift":["Putprestaties en productieverhoging","Performanța sondelor și creșterea producției","Работа скважин и прирост добычи"],
+"Pipelines":["Pijpleidingen","Conducte","Трубопроводы"],
+"Metering and commissioning":["Meting en inbedrijfstelling","Măsurare și punere în funcțiune","Учёт и пусконаладка"],
+"Delivery":["Uitvoering","Livrare","Реализация"],
+"Project management and RCA":["Projectmanagement en RCA","Management de proiect și RCA","Управление проектами и RCA"],
+"Strategy":["Strategie","Strategie","Стратегия"],
+"Decarbonisation roadmaps":["Decarbonisatie-roadmaps","Foi de parcurs pentru decarbonizare","Дорожные карты декарбонизации"],
+"Carbon":["Koolstof","Carbon","Углерод"],
+"CCUS and emissions reduction":["CCUS en emissiereductie","CCUS și reducerea emisiilor","CCUS и сокращение выбросов"],
+"Renewables":["Hernieuwbaar","Surse regenerabile","ВИЭ"],
+"Solar, wind and storage":["Zon, wind en opslag","Solar, eolian și stocare","Солнце, ветер и накопители"],
+"Geothermal and CO₂ storage":["Geothermie en CO₂-opslag","Geotermie și stocarea CO₂","Геотермия и хранение CO₂"],
+"Equipment":["Apparatuur","Echipamente","Оборудование"],
+"Rotating and static failures":["Storingen aan roterende en statische apparatuur","Defecte ale echipamentelor rotative și statice","Отказы динамического и статического оборудования"],
+"Integrity":["Integriteit","Integritate","Целостность"],
+"Pipeline leaks and corrosion":["Lekkages en corrosie in pijpleidingen","Scurgeri și coroziune la conducte","Утечки и коррозия трубопроводов"],
+"Unplanned losses and trips":["Ongeplande verliezen en trips","Pierderi și opriri neplanificate","Внеплановые потери и остановы"],
+"Safety":["Veiligheid","Siguranță","Безопасность"],
+"Process incident investigation":["Onderzoek naar procesincidenten","Investigarea incidentelor de proces","Расследование технологических инцидентов"],
+"Our departments":["Onze afdelingen","Departamentele noastre","Наши направления"],
+"Subsurface, reservoir, production, pipeline metering and commissioning, project management and RCA.":["Ondergrond, reservoir, productie, pijpleidingmeting en inbedrijfstelling, projectmanagement en RCA.","Subsol, zăcământ, producție, măsurarea și punerea în funcțiune a conductelor, management de proiect și RCA.","Недра, пласт, добыча, учёт и пусконаладка трубопроводов, управление проектами и RCA."],
+"Viewing":["Geselecteerd","Selectat","Выбрано"],
+"View":["Bekijken","Vizualizați","Открыть"],
+"New Energy / Energy Transition":["Nieuwe Energie / Energietransitie","Energie nouă / Tranziție energetică","Новая энергетика / Энергопереход"],
+"Decarbonisation strategy, CCUS, geothermal, solar, wind, storage and hydrogen.":["Decarbonisatiestrategie, CCUS, geothermie, zon, wind, opslag en waterstof.","Strategie de decarbonizare, CCUS, geotermie, solar, eolian, stocare și hidrogen.","Стратегия декарбонизации, CCUS, геотермия, солнце, ветер, накопители и водород."],
+"Failure and incident investigations, reliability studies and corrective action programmes.":["Onderzoek naar storingen en incidenten, betrouwbaarheidsstudies en programma's voor corrigerende maatregelen.","Investigarea defectelor și incidentelor, studii de fiabilitate și programe de acțiuni corective.","Расследование отказов и инцидентов, исследования надёжности и программы корректирующих мер."],
+"Engineering consultancy":["Technisch advies","Consultanță inginerească","Инженерный консалтинг"],
+"Projects delivered on plan. Failures understood at the root.":["Projecten volgens plan opgeleverd. Storingen tot op de wortel begrepen.","Proiecte livrate conform planului. Defecte înțelese de la rădăcină.","Проекты — точно по плану. Отказы — понятны до первопричины."],
+"Two disciplines run through every TIS engagement. We manage scope, schedule and cost to an agreed baseline, and when something fails we find the cause that stops it happening again.":["Twee disciplines lopen door elke opdracht van TIS. We beheren scope, planning en kosten volgens een afgesproken baseline, en als er iets faalt, vinden we de oorzaak zodat het niet opnieuw gebeurt.","Două discipline stau la baza fiecărui proiect TIS. Gestionăm domeniul, programul și costurile față de o referință convenită, iar când ceva se defectează găsim cauza, ca să nu se mai repete.","Две дисциплины лежат в основе каждого проекта TIS. Мы управляем объёмом, сроками и стоимостью относительно согласованного базового плана, а при отказе находим причину, чтобы он не повторился."],
+"Project Management":["Projectmanagement","Management de proiect","Управление проектами"],
+"End-to-end management of oil and gas projects, from feasibility and FEED through execution, commissioning and handover to operations.":["Volledig management van olie- en gasprojecten, van haalbaarheid en FEED via uitvoering en inbedrijfstelling tot overdracht aan operations.","Managementul complet al proiectelor de petrol și gaze, de la fezabilitate și FEED, prin execuție și punere în funcțiune, până la predarea către exploatare.","Комплексное управление нефтегазовыми проектами: от ТЭО и FEED через строительство и пусконаладку до передачи в эксплуатацию."],
+"Scope definition, WBS and integrated schedules":["Scopedefinitie, WBS en geïntegreerde planningen","Definirea domeniului, WBS și grafice integrate","Определение объёма работ, ИСР (WBS) и интегрированные графики"],
+"Cost estimating, budget control and earned value reporting":["Kostenramingen, budgetbeheersing en earned-value-rapportage","Estimarea costurilor, controlul bugetului și raportare earned value","Сметы, контроль бюджета и отчётность по освоенному объёму"],
+"Contractor and vendor management, interface control":["Aannemers- en leveranciersmanagement, interfacebeheer","Managementul contractorilor și furnizorilor, controlul interfețelor","Управление подрядчиками и поставщиками, контроль интерфейсов"],
+"HSE planning, risk registers and stage-gate reviews":["HSE-planning, risicoregisters en stage-gate-reviews","Planificare HSE, registre de riscuri și revizii stage-gate","Планирование ОТ, ПБ и ООС, реестры рисков и поэтапные экспертизы"],
+"EPC oversight":["EPC-toezicht","Supervizare EPC","Надзор за EPC"],
+"Structured investigation of equipment failures, production losses, metering discrepancies and process incidents, ending in corrective actions you can track.":["Gestructureerd onderzoek naar storingen aan apparatuur, productieverliezen, meetafwijkingen en procesincidenten, met corrigerende maatregelen die u kunt opvolgen.","Investigarea structurată a defectelor echipamentelor, pierderilor de producție, discrepanțelor de măsurare și incidentelor de proces, încheiată cu acțiuni corective pe care le puteți urmări.","Структурированное расследование отказов оборудования, потерь добычи, расхождений в учёте и технологических инцидентов с корректирующими мерами, выполнение которых можно отслеживать."],
+"Evidence collection, interviews and timeline reconstruction":["Bewijsverzameling, interviews en reconstructie van de tijdlijn","Colectarea dovezilor, interviuri și reconstituirea cronologiei","Сбор доказательств, интервью и восстановление хронологии"],
+"5-Why, fishbone (Ishikawa) and fault tree analysis":["5-Why, visgraat (Ishikawa) en foutenboomanalyse","5 De ce, os de pește (Ishikawa) și analiza arborelui de defecte","«5 почему», диаграмма Исикавы и анализ дерева отказов"],
+"Failure mode review for rotating and static equipment":["Analyse van faalwijzen voor roterende en statische apparatuur","Analiza modurilor de defectare pentru echipamente rotative și statice","Анализ видов отказов динамического и статического оборудования"],
+"CAPA plans with owners, deadlines and verification":["CAPA-plannen met eigenaren, deadlines en verificatie","Planuri CAPA cu responsabili, termene și verificare","Планы CAPA с ответственными, сроками и проверкой"],
+"Technical services":["Technische diensten","Servicii tehnice","Технические услуги"],
+"Every interval of the asset, logged top to bottom.":["Elk interval van het asset, van boven tot onder gelogd.","Fiecare interval al activului, înregistrat de sus până jos.","Каждый интервал актива — от устья до забоя."],
+"Our technical services follow the hydrocarbon from the rock it sits in to the meter that measures its sale. Each service can be engaged on its own or as part of an integrated study.":["Onze technische diensten volgen de koolwaterstof van het gesteente waarin hij zit tot de meter die de verkoop meet. Elke dienst is los af te nemen of als onderdeel van een geïntegreerde studie.","Serviciile noastre tehnice urmăresc hidrocarbura de la roca în care se află până la contorul care îi măsoară vânzarea. Fiecare serviciu poate fi contractat separat sau ca parte a unui studiu integrat.","Наши технические услуги сопровождают углеводороды от породы, в которой они залегают, до узла учёта, на котором измеряется их продажа. Каждую услугу можно заказать отдельно или в составе комплексного исследования."],
+"Geological & Subsurface Studies":["Geologische & ondergrondse studies","Studii geologice și de subsol","Геологические исследования недр"],
+"Building a reliable picture of what lies below: structure, stratigraphy, rock properties and uncertainty, to support exploration, field development and well placement.":["Een betrouwbaar beeld van de ondergrond: structuur, stratigrafie, gesteente-eigenschappen en onzekerheid, ter ondersteuning van exploratie, veldontwikkeling en putplaatsing.","O imagine fiabilă a ceea ce se află dedesubt: structură, stratigrafie, proprietăți ale rocilor și incertitudine, pentru explorare, dezvoltarea zăcămintelor și amplasarea sondelor.","Достоверная картина недр: структура, стратиграфия, свойства пород и неопределённости — для разведки, разработки месторождений и размещения скважин."],
+"Deliverables":["Resultaten","Livrabile","Результаты работ"],
+"Seismic interpretation and structural mapping":["Seismische interpretatie en structurele kartering","Interpretare seismică și cartare structurală","Интерпретация сейсмики и структурные построения"],
+"Well log correlation and petrophysical evaluation":["Correlatie van putlogs en petrofysische evaluatie","Corelarea diagrafiilor și evaluare petrofizică","Корреляция ГИС и петрофизическая интерпретация"],
+"Static 3D geological models and volumetrics (STOIIP / GIIP)":["Statische 3D-geologische modellen en volumeberekeningen (STOIIP / GIIP)","Modele geologice 3D statice și calcul volumetric (STOIIP / GIIP)","Статические 3D геологические модели и подсчёт запасов (STOIIP / GIIP)"],
+"Well proposals and geosteering support":["Putvoorstellen en geosteering-ondersteuning","Propuneri de sonde și suport de geosteering","Проекты скважин и геонавигация"],
+"Reservoir":["Reservoir","Zăcământ","Пласт"],
+"Reservoir Engineering":["Reservoir-engineering","Ingineria zăcămintelor","Разработка месторождений"],
+"Understanding how the reservoir behaves under production, so you can forecast with confidence and choose the development plan that recovers the most at the right cost.":["Inzicht in hoe het reservoir zich gedraagt tijdens productie, zodat u met vertrouwen kunt voorspellen en het ontwikkelplan kiest dat het meeste wint tegen de juiste kosten.","Înțelegerea comportamentului zăcământului în exploatare, pentru prognoze sigure și alegerea planului de dezvoltare care recuperează cel mai mult la costul potrivit.","Понимание поведения пласта при разработке, чтобы уверенно прогнозировать добычу и выбрать план разработки с максимальным извлечением при оптимальных затратах."],
+"PVT analysis and fluid characterisation":["PVT-analyse en vloeistofkarakterisering","Analiză PVT și caracterizarea fluidelor","PVT-анализ и характеристика флюидов"],
+"Pressure transient analysis and well test interpretation":["Drukverloopanalyse en interpretatie van puttests","Analiza regimului tranzitoriu de presiune și interpretarea testelor de sondă","Анализ КВД/КПД и интерпретация гидродинамических исследований"],
+"Material balance and decline curve analysis":["Materiaalbalans en declinecurve-analyse","Bilanț material și analiza curbelor de declin","Материальный баланс и анализ кривых падения добычи"],
+"Dynamic simulation, reserves estimates and field development plans":["Dynamische simulatie, reserveschattingen en veldontwikkelingsplannen","Simulare dinamică, estimarea rezervelor și planuri de dezvoltare","Гидродинамическое моделирование, оценка запасов и проекты разработки"],
+"Wellbore":["Boorgat","Gaura de sondă","Ствол скважины"],
+"Production Enhancement":["Productieverhoging","Creșterea producției","Интенсификация добычи"],
+"Finding and removing the constraints that hold wells and facilities below their potential, from near-wellbore damage to undersized surface equipment.":["Het vinden en wegnemen van beperkingen die putten en installaties onder hun potentieel houden, van schade nabij het boorgat tot te kleine bovengrondse installaties.","Identificarea și eliminarea constrângerilor care țin sondele și instalațiile sub potențial, de la deteriorarea zonei din jurul sondei la echipamente de suprafață subdimensionate.","Поиск и устранение ограничений, которые не дают скважинам и объектам выйти на потенциал: от загрязнения призабойной зоны до недостаточной мощности наземного оборудования."],
+"Nodal analysis and well performance reviews":["Nodale analyse en evaluatie van putprestaties","Analiză nodală și evaluarea performanței sondelor","Узловой анализ и оценка работы скважин"],
+"Artificial lift selection and optimisation (ESP, gas lift, rod pump)":["Selectie en optimalisatie van kunstmatige lift (ESP, gaslift, stangenpomp)","Selecția și optimizarea extracției artificiale (ESP, gaz-lift, pompă cu prăjini)","Выбор и оптимизация механизированной добычи (ЭЦН, газлифт, ШГН)"],
+"Stimulation candidate selection: acidising and fracturing":["Kandidaatselectie voor stimulatie: aanzuren en fracken","Selecția candidaților pentru stimulare: acidizare și fracturare","Подбор кандидатов для ГТМ: кислотные обработки и ГРП"],
+"Water and sand management, debottlenecking studies":["Water- en zandbeheer, debottleneckingstudies","Managementul apei și nisipului, studii de eliminare a blocajelor","Борьба с водой и песком, устранение узких мест"],
+"Surface":["Oppervlakte","Suprafață","Поверхность"],
+"Pipeline Metering":["Pijpleidingmeting","Măsurarea conductelor","Учёт в трубопроводах"],
+"Accurate, auditable measurement for allocation and custody transfer. We design, review and verify metering systems so that every barrel and every standard cubic metre is accounted for.":["Nauwkeurige, controleerbare meting voor allocatie en fiscale overdracht. We ontwerpen, beoordelen en verifiëren meetsystemen, zodat elk vat en elke standaard kubieke meter wordt verantwoord.","Măsurare precisă și auditabilă pentru alocare și transfer fiscal. Proiectăm, evaluăm și verificăm sisteme de măsurare astfel încât fiecare baril și fiecare metru cub standard să fie contabilizat.","Точный, проверяемый учёт для распределения и коммерческой передачи. Мы проектируем, проверяем и верифицируем системы измерений, чтобы каждый баррель и каждый стандартный кубометр был учтён."],
+"Metering system design and technology selection (ultrasonic, Coriolis, orifice, turbine)":["Ontwerp van meetsystemen en technologiekeuze (ultrasoon, Coriolis, meetflens, turbine)","Proiectarea sistemelor de măsurare și selecția tehnologiei (ultrasonic, Coriolis, diafragmă, turbină)","Проектирование систем учёта и выбор технологии (ультразвуковые, кориолисовые, сужающие устройства, турбинные)"],
+"Prover and meter calibration, uncertainty analysis":["Kalibratie van provers en meters, onzekerheidsanalyse","Calibrarea proverelor și contoarelor, analiza incertitudinii","Поверка ТПУ и счётчиков, анализ неопределённости"],
+"Flow computer configuration and audit":["Configuratie en audit van flowcomputers","Configurarea și auditul calculatoarelor de debit","Настройка и аудит вычислителей расхода"],
+"Mismeasurement investigations and allocation reviews":["Onderzoek naar meetfouten en allocatiereviews","Investigarea erorilor de măsurare și revizuirea alocării","Расследование ошибок учёта и проверка распределения"],
+"Pipeline Commissioning":["Inbedrijfstelling van pijpleidingen","Punerea în funcțiune a conductelor","Пусконаладка трубопроводов"],
+"Taking a newly built or repaired pipeline safely from mechanical completion to first flow, with documented test results at every step. The full sequence is set out below.":["Een nieuw gebouwde of gerepareerde pijpleiding veilig van mechanische voltooiing naar eerste doorstroming brengen, met gedocumenteerde testresultaten bij elke stap. De volledige volgorde staat hieronder.","Aducerea în siguranță a unei conducte noi sau reparate de la finalizarea mecanică la primul flux, cu rezultate de testare documentate la fiecare pas. Secvența completă este prezentată mai jos.","Безопасный перевод нового или отремонтированного трубопровода от механической готовности до первого потока с документированием результатов на каждом этапе. Полная последовательность приведена ниже."],
+"Commissioning procedures and test packs":["Inbedrijfstellingsprocedures en testpakketten","Proceduri de punere în funcțiune și pachete de testare","Программы пусконаладки и пакеты испытаний"],
+"Cleaning, gauging, hydrotest and drying supervision":["Toezicht op reiniging, kalibratie, hydrotest en drogen","Supravegherea curățării, calibrării, probei hidraulice și uscării","Надзор за очисткой, калибровкой, гидроиспытанием и осушкой"],
+"Nitrogen purging and line packing":["Stikstofspoeling en vullen van de leiding","Purjare cu azot și umplerea conductei","Продувка азотом и заполнение трубопровода"],
+"Pre-start-up safety review and handover dossier":["Veiligheidsreview vóór opstart en overdrachtsdossier","Revizia de siguranță înainte de pornire și dosarul de predare","Проверка безопасности перед пуском и передаточная документация"],
+"Pipeline commissioning sequence":["Volgorde van inbedrijfstelling","Secvența de punere în funcțiune a conductelor","Последовательность пусконаладки трубопровода"],
+"Eight steps from mechanical completion to first flow.":["Acht stappen van mechanische voltooiing tot eerste doorstroming.","Opt pași de la finalizarea mecanică la primul flux.","Восемь этапов от механической готовности до первого потока."],
+"Every TIS commissioning project follows this sequence. Each step is signed off before the next begins, and the records go into the handover dossier.":["Elk inbedrijfstellingsproject van TIS volgt deze volgorde. Elke stap wordt afgetekend voordat de volgende begint, en de registraties gaan in het overdrachtsdossier.","Fiecare proiect de punere în funcțiune TIS urmează această secvență. Fiecare pas este aprobat înainte de începerea următorului, iar înregistrările intră în dosarul de predare.","Каждый проект пусконаладки TIS проходит эту последовательность. Каждый этап подписывается до начала следующего, а записи включаются в передаточную документацию."],
+"Mechanical completion":["Mechanische voltooiing","Finalizare mecanică","Механическая готовность"],
+"Walkdowns, punch-list closure and verification against as-built drawings.":["Inspectierondes, afhandeling van de puntenlijst en verificatie tegen as-builttekeningen.","Inspecții pe teren, închiderea listei de remedieri și verificarea față de desenele as-built.","Обходы, закрытие перечня замечаний и сверка с исполнительной документацией."],
+"Cleaning & gauging":["Reinigen & kalibreren","Curățare și calibrare","Очистка и калибровка"],
+"Pigging runs to remove construction debris and confirm bore with a gauging plate.":["Pigruns om bouwafval te verwijderen en de binnendiameter te bevestigen met een kalibratieplaat.","Treceri cu godevil pentru îndepărtarea resturilor de construcție și confirmarea diametrului cu o placă de calibrare.","Пропуск поршней для удаления строительного мусора и подтверждение проходного сечения калибровочной пластиной."],
+"Hydrostatic testing":["Hydrostatisch testen","Probă hidrostatică","Гидравлические испытания"],
+"Pressure test held for the specified period to prove strength and leak tightness.":["Druktest gedurende de voorgeschreven periode om sterkte en lekdichtheid aan te tonen.","Probă de presiune menținută pe perioada specificată pentru a dovedi rezistența și etanșeitatea.","Испытание давлением в течение установленного времени для подтверждения прочности и герметичности."],
+"Dewatering":["Ontwateren","Evacuarea apei","Удаление воды"],
+"Displacement of test water by pig trains and safe disposal of the water.":["Verdringing van het testwater met pigtreinen en veilige afvoer van het water.","Dislocarea apei de testare cu trenuri de godevile și evacuarea ei în siguranță.","Вытеснение испытательной воды поршнями и её безопасная утилизация."],
+"Drying":["Drogen","Uscare","Осушка"],
+"Air or vacuum drying until the line meets the specified dew point.":["Drogen met lucht of vacuüm tot de leiding het voorgeschreven dauwpunt haalt.","Uscare cu aer sau în vid până când conducta atinge punctul de rouă specificat.","Осушка воздухом или вакуумом до достижения заданной точки росы."],
+"Nitrogen purging":["Stikstofspoeling","Purjare cu azot","Продувка азотом"],
+"Inerting the line to remove oxygen before hydrocarbons are introduced.":["Inertiseren van de leiding om zuurstof te verwijderen voordat koolwaterstoffen worden toegelaten.","Inertizarea conductei pentru eliminarea oxigenului înainte de introducerea hidrocarburilor.","Инертизация трубопровода для удаления кислорода перед подачей углеводородов."],
+"Pre-start-up review":["Review vóór opstart","Revizie înainte de pornire","Проверка перед пуском"],
+"PSSR covering instruments, safety systems, metering and operating procedures.":["PSSR van instrumentatie, veiligheidssystemen, meting en bedieningsprocedures.","PSSR pentru instrumentație, sisteme de siguranță, măsurare și proceduri de operare.","PSSR: КИПиА, системы безопасности, учёт и эксплуатационные инструкции."],
+"Line packing & first flow":["Leiding vullen & eerste doorstroming","Umplerea conductei și primul flux","Заполнение и первый поток"],
+"Controlled introduction of product, stabilisation and handover to operations.":["Gecontroleerde toevoer van product, stabilisatie en overdracht aan operations.","Introducerea controlată a produsului, stabilizare și predare către exploatare.","Контролируемая подача продукта, стабилизация и передача в эксплуатацию."],
+"Codes & standards":["Codes & normen","Coduri și standarde","Нормы и стандарты"],
+"Built on the standards your auditors use.":["Gebouwd op de normen die uw auditors gebruiken.","Construit pe standardele folosite de auditorii dvs.","На основе стандартов, которыми пользуются ваши аудиторы."],
+"Our studies, designs and test procedures reference the international codes that govern measurement, pipeline integrity and project delivery.":["Onze studies, ontwerpen en testprocedures verwijzen naar de internationale codes voor meting, pijpleidingintegriteit en projectuitvoering.","Studiile, proiectele și procedurile noastre de testare se raportează la codurile internaționale care reglementează măsurarea, integritatea conductelor și livrarea proiectelor.","Наши исследования, проекты и методики испытаний опираются на международные нормы в области учёта, целостности трубопроводов и реализации проектов."],
+"Manual of Petroleum Measurement Standards":["Handboek met normen voor petroleummeting","Manualul standardelor de măsurare a petrolului","Руководство по стандартам измерения нефти"],
+"Gas measurement: orifice, turbine, ultrasonic":["Gasmeting: meetflens, turbine, ultrasoon","Măsurarea gazelor: diafragmă, turbină, ultrasonic","Учёт газа: сужающие устройства, турбинные, ультразвуковые"],
+"Flow measurement by differential pressure devices":["Debietmeting met drukverschilmeters","Măsurarea debitului cu dispozitive de presiune diferențială","Измерение расхода методом переменного перепада давления"],
+"Liquid and gas transmission pipelines":["Transportleidingen voor vloeistof en gas","Conducte de transport pentru lichide și gaze","Магистральные трубопроводы для жидкостей и газа"],
+"Pressure testing of steel pipelines":["Druktesten van stalen pijpleidingen","Probe de presiune pentru conducte din oțel","Испытания давлением стальных трубопроводов"],
+"Project management body of knowledge":["Kennisbasis voor projectmanagement","Corpul de cunoștințe în managementul proiectelor","Свод знаний по управлению проектами"],
+"Energy transition consultancy":["Advies energietransitie","Consultanță pentru tranziția energetică","Консалтинг по энергопереходу"],
+"A credible path to lower emissions, planned like any other project.":["Een geloofwaardig pad naar lagere emissies, gepland als elk ander project.","Un drum credibil spre emisii mai mici, planificat ca orice alt proiect.","Реалистичный путь к снижению выбросов, спланированный как любой другой проект."],
+"We start with a measured baseline and end with projects that are funded, built and verified. The same project controls and root cause discipline we use in oil and gas keep transition work on budget.":["We beginnen met een gemeten baseline en eindigen met projecten die gefinancierd, gebouwd en geverifieerd zijn. Dezelfde projectbeheersing en oorzaakdiscipline die we in olie en gas toepassen, houden transitiewerk binnen budget.","Pornim de la o referință măsurată și ajungem la proiecte finanțate, construite și verificate. Același control de proiect și aceeași disciplină a analizei cauzelor pe care le folosim în petrol și gaze mențin proiectele de tranziție în buget.","Мы начинаем с измеренного базового уровня и заканчиваем проектами, которые профинансированы, построены и верифицированы. Те же методы контроля проектов и анализа причин, что и в нефтегазовой отрасли, удерживают работы по энергопереходу в рамках бюджета."],
+"Decarbonisation Strategy":["Decarbonisatiestrategie","Strategie de decarbonizare","Стратегия декарбонизации"],
+"Roadmaps that turn emissions targets into a ranked list of projects with costs, timelines and abatement for each.":["Roadmaps die emissiedoelen omzetten in een gerangschikte lijst van projecten, met per project kosten, planning en reductie.","Foi de parcurs care transformă țintele de emisii într-o listă ierarhizată de proiecte, cu costuri, termene și reducere pentru fiecare.","Дорожные карты, превращающие цели по выбросам в ранжированный список проектов со стоимостью, сроками и объёмом сокращения для каждого."],
+"Scope 1 and 2 emissions baselines and inventories":["Baselines en inventarisaties van scope 1- en 2-emissies","Referințe și inventare ale emisiilor Scope 1 și 2","Базовые уровни и инвентаризация выбросов охвата 1 и 2"],
+"Energy audits and efficiency opportunities":["Energieaudits en efficiëntiekansen","Audituri energetice și oportunități de eficiență","Энергоаудиты и возможности повышения эффективности"],
+"Marginal abatement cost curves and project ranking":["Marginale reductiekostencurves en projectrangschikking","Curbe ale costului marginal de reducere și ierarhizarea proiectelor","Кривые предельных затрат на сокращение выбросов и ранжирование проектов"],
+"Net-zero roadmaps, business cases and funding support":["Net-zero-roadmaps, businesscases en financieringsondersteuning","Foi de parcurs net-zero, analize de business și sprijin pentru finanțare","Дорожные карты нулевых выбросов, бизнес-обоснования и поддержка финансирования"],
+"GHG baseline":["Broeikasgasbaseline","Referință GES","Базовый уровень ПГ"],
+"Net-zero roadmap":["Net-zero-roadmap","Foaie de parcurs net-zero","Дорожная карта нулевых выбросов"],
+"Methane & Flaring Reduction":["Reductie van methaan & affakkelen","Reducerea metanului și a arderii la faclă","Сокращение метана и сжигания на факелах"],
+"Practical cuts to emissions on existing oil and gas assets, often the fastest and lowest-cost abatement available.":["Praktische emissiereducties bij bestaande olie- en gasassets, vaak de snelste en goedkoopste reductie die beschikbaar is.","Reduceri practice ale emisiilor la activele existente de petrol și gaze, adesea cea mai rapidă și mai ieftină reducere disponibilă.","Практическое сокращение выбросов на действующих нефтегазовых объектах — зачастую самый быстрый и дешёвый способ."],
+"Leak detection and repair (LDAR) programmes":["Programma's voor lekdetectie en -reparatie (LDAR)","Programe de detectare și reparare a scurgerilor (LDAR)","Программы обнаружения и устранения утечек (LDAR)"],
+"Flare gas recovery and routine flaring elimination":["Terugwinning van fakkelgas en beëindiging van routinematig affakkelen","Recuperarea gazelor de faclă și eliminarea arderii de rutină","Утилизация факельного газа и прекращение регулярного сжигания"],
+"Venting reduction and equipment replacement studies":["Reductie van venting en studies naar vervanging van apparatuur","Reducerea ventilării și studii de înlocuire a echipamentelor","Сокращение стравливания и исследования по замене оборудования"],
+"Measurement, reporting and verification (MRV) of methane":["Meting, rapportage en verificatie (MRV) van methaan","Măsurarea, raportarea și verificarea (MRV) metanului","Мониторинг, отчётность и верификация (MRV) метана"],
+"Flare gas recovery":["Fakkelgasterugwinning","Recuperarea gazelor de faclă","Утилизация факельного газа"],
+"New energy technical services":["Technische diensten nieuwe energie","Servicii tehnice pentru energie nouă","Технические услуги в новой энергетике"],
+"Low-carbon projects, from the sky to the storage formation.":["Koolstofarme projecten, van de lucht tot de opslagformatie.","Proiecte cu emisii reduse, de la cer până la formațiunea de stocare.","Низкоуглеродные проекты — от неба до пласта-хранилища."],
+"Our subsurface and facilities engineers apply their oil and gas experience to the technologies that will replace and complement it.":["Onze ondergrond- en installatie-ingenieurs passen hun olie- en gaservaring toe op de technologieën die deze zullen vervangen en aanvullen.","Inginerii noștri de subsol și de instalații își aplică experiența din petrol și gaze tehnologiilor care le vor înlocui și completa.","Наши специалисты по недрам и наземным объектам применяют нефтегазовый опыт в технологиях, которые дополнят и заменят традиционную энергетику."],
+"Solar PV & Wind":["Zonne-PV & wind","Fotovoltaic și eolian","Солнечная и ветровая энергетика"],
+"Renewable power for grids, industrial sites and remote oilfield facilities, including hybrid systems that cut diesel and gas use for power generation.":["Hernieuwbare stroom voor netten, industriële locaties en afgelegen olievelden, inclusief hybride systemen die het diesel- en gasverbruik voor stroomopwekking verlagen.","Energie regenerabilă pentru rețele, situri industriale și instalații petroliere izolate, inclusiv sisteme hibride care reduc consumul de motorină și gaze pentru generarea de energie.","Возобновляемая энергия для сетей, промышленных площадок и удалённых промыслов, включая гибридные системы, сокращающие расход дизеля и газа на выработку электроэнергии."],
+"Site assessment and energy yield studies":["Locatiebeoordeling en opbrengststudies","Evaluarea amplasamentului și studii de producție energetică","Оценка площадки и расчёт выработки"],
+"Hybrid power design for off-grid and oilfield sites":["Hybride energieontwerpen voor off-grid locaties en olievelden","Proiectarea sistemelor hibride pentru situri izolate și petroliere","Проектирование гибридного энергоснабжения для автономных объектов и промыслов"],
+"Owner's engineer and EPC oversight":["Owner's engineer en EPC-toezicht","Inginer al beneficiarului și supervizare EPC","Технический надзор заказчика и контроль EPC"],
+"Testing, commissioning and performance verification":["Testen, inbedrijfstelling en prestatieverificatie","Testare, punere în funcțiune și verificarea performanței","Испытания, пусконаладка и подтверждение характеристик"],
+"Energy Storage":["Energieopslag","Stocarea energiei","Накопители энергии"],
+"Battery systems that firm up renewable output, shave peak demand and provide backup power for critical loads.":["Batterijsystemen die hernieuwbare productie stabiliseren, piekvraag afvlakken en back-upstroom leveren voor kritieke belastingen.","Sisteme de baterii care stabilizează producția regenerabilă, reduc vârfurile de consum și asigură alimentare de rezervă pentru consumatorii critici.","Аккумуляторные системы, которые стабилизируют выработку ВИЭ, срезают пики потребления и обеспечивают резервное питание критичных нагрузок."],
+"Sizing and use-case studies (peak shaving, firming, backup)":["Dimensionering en use-casestudies (peak shaving, stabilisatie, back-up)","Dimensionare și studii de utilizare (reducerea vârfurilor, stabilizare, rezervă)","Подбор мощности и сценарии применения (срезание пиков, стабилизация, резерв)"],
+"Technology and vendor selection":["Technologie- en leverancierskeuze","Selecția tehnologiei și a furnizorilor","Выбор технологии и поставщика"],
+"Integration with solar, wind and existing generation":["Integratie met zon, wind en bestaande opwekking","Integrarea cu solar, eolian și generarea existentă","Интеграция с солнечной, ветровой и существующей генерацией"],
+"Safety, commissioning and handover":["Veiligheid, inbedrijfstelling en overdracht","Siguranță, punere în funcțiune și predare","Безопасность, пусконаладка и передача"],
+"Facilities":["Installaties","Instalații","Объекты"],
+"Hydrogen":["Waterstof","Hidrogen","Водород"],
+"Feasibility and concept studies for green and blue hydrogen, from electrolyser sizing to storage, transport and end use.":["Haalbaarheids- en conceptstudies voor groene en blauwe waterstof, van dimensionering van elektrolysers tot opslag, transport en eindgebruik.","Studii de fezabilitate și de concept pentru hidrogen verde și albastru, de la dimensionarea electrolizoarelor la stocare, transport și utilizare finală.","ТЭО и концептуальные исследования по зелёному и голубому водороду: от подбора электролизёров до хранения, транспорта и конечного использования."],
+"Green and blue hydrogen feasibility studies":["Haalbaarheidsstudies voor groene en blauwe waterstof","Studii de fezabilitate pentru hidrogen verde și albastru","ТЭО проектов зелёного и голубого водорода"],
+"Electrolyser and balance-of-plant concept design":["Conceptontwerp van elektrolyser en balance-of-plant","Proiect conceptual pentru electrolizor și instalațiile auxiliare","Концептуальный проект электролизёра и вспомогательных систем"],
+"Storage, pipeline and blending assessments":["Beoordelingen van opslag, pijpleidingen en bijmenging","Evaluări de stocare, conducte și amestec","Оценка хранения, трубопроводного транспорта и смешения"],
+"Levelised cost of hydrogen (LCOH) analysis":["Analyse van de genormaliseerde kosten van waterstof (LCOH)","Analiza costului nivelat al hidrogenului (LCOH)","Анализ приведённой стоимости водорода (LCOH)"],
+"Carbon Capture & Storage (CCUS)":["CO₂-afvang & -opslag (CCUS)","Captarea și stocarea carbonului (CCUS)","Улавливание и хранение углерода (CCUS)"],
+"Finding, proving and monitoring safe places to store CO₂ underground, using the same geology and reservoir engineering skills that find oil and gas.":["Het vinden, aantonen en monitoren van veilige plekken om CO₂ ondergronds op te slaan, met dezelfde geologische en reservoirkennis die olie en gas vindt.","Identificarea, demonstrarea și monitorizarea locurilor sigure pentru stocarea subterană a CO₂, folosind aceleași competențe de geologie și ingineria zăcămintelor care descoperă petrol și gaze.","Поиск, обоснование и мониторинг безопасных мест подземного хранения CO₂ с использованием тех же компетенций в геологии и разработке, что находят нефть и газ."],
+"Storage site screening and characterisation":["Screening en karakterisering van opslaglocaties","Selecția și caracterizarea siturilor de stocare","Скрининг и характеристика объектов хранения"],
+"Storage capacity, injectivity and cap rock integrity studies":["Studies naar opslagcapaciteit, injectiviteit en integriteit van de afdeklaag","Studii privind capacitatea de stocare, injectivitatea și integritatea rocii acoperiș","Оценка ёмкости, приёмистости и целостности покрышки"],
+"Depleted field and saline aquifer evaluation":["Evaluatie van uitgeputte velden en zoutwateraquifers","Evaluarea zăcămintelor epuizate și a acviferelor saline","Оценка истощённых месторождений и солёных водоносных горизонтов"],
+"CO₂ pipeline design and monitoring (MMV) plans":["CO₂-pijpleidingontwerp en monitoringplannen (MMV)","Proiectarea conductelor de CO₂ și planuri de monitorizare (MMV)","Проектирование трубопроводов CO₂ и планы мониторинга (MMV)"],
+"Geothermal":["Geothermie","Geotermie","Геотермальная энергетика"],
+"Heat and power from the subsurface, including repurposing of mature oil and gas wells for geothermal use.":["Warmte en stroom uit de ondergrond, inclusief hergebruik van volwassen olie- en gasputten voor geothermie.","Căldură și energie din subsol, inclusiv reutilizarea sondelor mature de petrol și gaze pentru geotermie.","Тепло и электроэнергия из недр, включая перепрофилирование старых нефтегазовых скважин под геотермию."],
+"Geothermal resource assessment and heat-in-place estimates":["Beoordeling van geothermische bronnen en schatting van de aanwezige warmte","Evaluarea resurselor geotermale și estimarea căldurii în loc","Оценка геотермальных ресурсов и запасов тепла"],
+"Reservoir modelling and well design":["Reservoirmodellering en putontwerp","Modelarea zăcământului și proiectarea sondelor","Моделирование пласта и проектирование скважин"],
+"Well repurposing studies for mature fields":["Studies naar hergebruik van putten in volwassen velden","Studii de reutilizare a sondelor din zăcăminte mature","Исследования по перепрофилированию скважин зрелых месторождений"],
+"Surface plant concept selection":["Conceptkeuze voor de bovengrondse installatie","Selecția conceptului instalației de suprafață","Выбор концепции наземной установки"],
+"How a transition project runs":["Zo verloopt een transitieproject","Cum se desfășoară un proiect de tranziție","Как проходит проект энергоперехода"],
+"Five stages from baseline to verified reductions.":["Vijf fasen van baseline tot geverifieerde reducties.","Cinci etape de la referință la reduceri verificate.","Пять этапов от базового уровня до подтверждённого сокращения."],
+"Each stage produces a decision document, so you can stop, adjust or continue with full information.":["Elke fase levert een beslisdocument op, zodat u met volledige informatie kunt stoppen, bijsturen of doorgaan.","Fiecare etapă produce un document de decizie, astfel încât să puteți opri, ajusta sau continua având toate informațiile.","Каждый этап завершается документом для принятия решения, чтобы вы могли остановиться, скорректировать курс или продолжить, имея полную информацию."],
+"Baseline":["Baseline","Referință","Базовый уровень"],
+"Measure current energy use and emissions across the asset or portfolio.":["Meet het huidige energieverbruik en de emissies van het asset of de portefeuille.","Măsurarea consumului actual de energie și a emisiilor pentru activ sau portofoliu.","Измерение текущего энергопотребления и выбросов по объекту или портфелю."],
+"Roadmap":["Roadmap","Foaie de parcurs","Дорожная карта"],
+"Identify and rank abatement options by cost, impact and timing.":["Identificeer en rangschik reductieopties op kosten, impact en timing.","Identificarea și ierarhizarea opțiunilor de reducere după cost, impact și calendar.","Выявление и ранжирование мер по сокращению по стоимости, эффекту и срокам."],
+"Feasibility":["Haalbaarheid","Fezabilitate","ТЭО"],
+"Concept design, cost estimates and business case for priority projects.":["Conceptontwerp, kostenramingen en businesscase voor prioritaire projecten.","Proiect conceptual, estimări de cost și analiză de business pentru proiectele prioritare.","Концептуальный проект, оценка затрат и бизнес-обоснование приоритетных проектов."],
+"Execution":["Uitvoering","Execuție","Реализация"],
+"Project management, EPC oversight, commissioning and handover.":["Projectmanagement, EPC-toezicht, inbedrijfstelling en overdracht.","Management de proiect, supervizare EPC, punere în funcțiune și predare.","Управление проектом, надзор за EPC, пусконаладка и передача."],
+"Verification":["Verificatie","Verificare","Верификация"],
+"Monitor, report and verify the reductions achieved.":["Monitor, rapporteer en verifieer de behaalde reducties.","Monitorizarea, raportarea și verificarea reducerilor obținute.","Мониторинг, отчётность и верификация достигнутых сокращений."],
+"Reductions that stand up to verification.":["Reducties die verificatie doorstaan.","Reduceri care trec de verificare.","Сокращения, которые выдерживают верификацию."],
+"Our transition work references the frameworks used by regulators, lenders and carbon registries.":["Ons transitiewerk verwijst naar de kaders die toezichthouders, financiers en koolstofregisters gebruiken.","Lucrările noastre de tranziție se raportează la cadrele folosite de autorități, finanțatori și registrele de carbon.","Наши работы по энергопереходу опираются на стандарты, которые используют регуляторы, кредиторы и углеродные реестры."],
+"Corporate emissions accounting and reporting":["Boekhouding en rapportage van bedrijfsemissies","Contabilizarea și raportarea emisiilor corporative","Учёт и отчётность корпоративных выбросов"],
+"Greenhouse gas quantification and verification":["Kwantificering en verificatie van broeikasgassen","Cuantificarea și verificarea gazelor cu efect de seră","Количественная оценка и верификация парниковых газов"],
+"Energy management systems":["Energiemanagementsystemen","Sisteme de management al energiei","Системы энергетического менеджмента"],
+"Geological storage of carbon dioxide":["Geologische opslag van koolstofdioxide","Stocarea geologică a dioxidului de carbon","Геологическое хранение диоксида углерода"],
+"Oil and gas methane reporting framework":["Rapportagekader voor methaan in olie en gas","Cadru de raportare a metanului în petrol și gaze","Система отчётности по метану в нефтегазовой отрасли"],
+"PV system testing and commissioning":["Testen en inbedrijfstelling van PV-systemen","Testarea și punerea în funcțiune a sistemelor PV","Испытания и ввод в эксплуатацию фотоэлектрических систем"],
+"Root cause analysis department":["Afdeling Root Cause Analyse","Departamentul de analiză a cauzei principale","Отдел анализа первопричин"],
+"Investigate after a failure. Prevent the next one.":["Onderzoek na een storing. Voorkom de volgende.","Investigați după un defect. Preveniți-l pe următorul.","Расследуйте отказ. Предотвратите следующий."],
+"We work in two modes. After an event, we lead a structured investigation to the true cause. Before one, we review your equipment and processes to find weak points while they are still cheap to fix.":["We werken op twee manieren. Na een gebeurtenis leiden we een gestructureerd onderzoek naar de werkelijke oorzaak. Daarvoor beoordelen we uw apparatuur en processen om zwakke plekken te vinden zolang ze nog goedkoop te verhelpen zijn.","Lucrăm în două moduri. După un eveniment, conducem o investigație structurată până la cauza reală. Înainte de unul, analizăm echipamentele și procesele pentru a găsi punctele slabe cât timp remedierea este încă ieftină.","Мы работаем в двух режимах. После события проводим структурированное расследование до истинной причины. До него — анализируем оборудование и процессы, чтобы найти слабые места, пока их устранение ещё недорого."],
+"Failure & Incident Investigation":["Onderzoek naar storingen & incidenten","Investigarea defectelor și incidentelor","Расследование отказов и инцидентов"],
+"Independent, evidence-based investigation after a failure, trip, leak or process safety event.":["Onafhankelijk, op bewijs gebaseerd onderzoek na een storing, trip, lekkage of procesveiligheidsincident.","Investigație independentă, bazată pe dovezi, după un defect, o oprire, o scurgere sau un eveniment de siguranța proceselor.","Независимое расследование на основе фактов после отказа, останова, утечки или инцидента в области промышленной безопасности."],
+"Rapid site mobilisation and evidence preservation":["Snelle mobilisatie naar de locatie en veiligstellen van bewijs","Mobilizare rapidă pe amplasament și conservarea dovezilor","Быстрый выезд на объект и сохранение доказательств"],
+"Interviews, data review and timeline reconstruction":["Interviews, data-analyse en reconstructie van de tijdlijn","Interviuri, analiza datelor și reconstituirea cronologiei","Интервью, анализ данных и восстановление хронологии"],
+"Cause analysis with 5-Why, fishbone and fault tree methods":["Oorzaakanalyse met 5-Why-, visgraat- en foutenboommethoden","Analiza cauzelor cu metodele 5 De ce, os de pește și arbore de defecte","Анализ причин методами «5 почему», «рыбья кость» и дерева отказов"],
+"Investigation report with findings and corrective actions":["Onderzoeksrapport met bevindingen en corrigerende maatregelen","Raport de investigație cu constatări și acțiuni corective","Отчёт о расследовании с выводами и корректирующими мерами"],
+"Fault tree":["Foutenboom","Arbore de defecte","Дерево отказов"],
+"Timeline":["Tijdlijn","Cronologie","Хронология"],
+"Reliability & Prevention":["Betrouwbaarheid & preventie","Fiabilitate și prevenire","Надёжность и предупреждение"],
+"Proactive studies that find and remove failure causes before they cost production or put people at risk.":["Proactieve studies die faaloorzaken vinden en wegnemen voordat ze productie kosten of mensen in gevaar brengen.","Studii proactive care identifică și elimină cauzele defectelor înainte ca acestea să coste producție sau să pună oamenii în pericol.","Проактивные исследования, которые выявляют и устраняют причины отказов до того, как они приведут к потерям добычи или угрозе для людей."],
+"Failure mode and effects analysis (FMEA / FMECA)":["Faalwijze- en effectanalyse (FMEA / FMECA)","Analiza modurilor de defectare și a efectelor (FMEA / FMECA)","Анализ видов и последствий отказов (FMEA / FMECA)"],
+"Bad actor reviews of repeat-failure equipment":["Bad-actorreviews van apparatuur met herhaalde storingen","Analiza echipamentelor cu defecte repetate (bad actors)","Анализ «проблемного» оборудования с повторяющимися отказами"],
+"Reliability data analysis and maintenance strategy review":["Analyse van betrouwbaarheidsdata en review van de onderhoudsstrategie","Analiza datelor de fiabilitate și revizuirea strategiei de mentenanță","Анализ данных о надёжности и пересмотр стратегии ТОиР"],
+"RCA training and investigation procedures for your team":["RCA-training en onderzoeksprocedures voor uw team","Instruire RCA și proceduri de investigație pentru echipa dvs.","Обучение RCA и процедуры расследования для вашей команды"],
+"Bad actors":["Bad actors","Echipamente problematice","Проблемное оборудование"],
+"Training":["Training","Instruire","Обучение"],
+"What we investigate":["Wat we onderzoeken","Ce investigăm","Что мы расследуем"],
+"Failures across the whole asset, below ground and above it.":["Storingen in het hele asset, onder en boven de grond.","Defecte în întregul activ, sub pământ și deasupra lui.","Отказы на всём активе — под землёй и на поверхности."],
+"Our investigators are engineers from the disciplines involved, so the analysis is grounded in how the equipment and the process actually work.":["Onze onderzoekers zijn ingenieurs uit de betrokken disciplines, zodat de analyse gebaseerd is op hoe de apparatuur en het proces echt werken.","Investigatorii noștri sunt ingineri din disciplinele implicate, astfel încât analiza se bazează pe modul real în care funcționează echipamentul și procesul.","Наши специалисты — инженеры профильных дисциплин, поэтому анализ основан на том, как реально работают оборудование и процесс."],
+"Well & Production Losses":["Put- & productieverliezen","Pierderi la sonde și producție","Потери на скважинах и в добыче"],
+"Sudden or gradual drops in well output, artificial lift failures and unplanned shut-ins.":["Plotselinge of geleidelijke dalingen in putproductie, storingen in kunstmatige lift en ongeplande stilleggingen.","Scăderi bruște sau treptate ale debitului sondelor, defecte ale extracției artificiale și opriri neplanificate.","Резкое или постепенное падение дебита, отказы механизированной добычи и внеплановые остановки скважин."],
+"Typical cases":["Typische gevallen","Cazuri tipice","Типичные случаи"],
+"Short ESP run life and repeat pump failures":["Korte looptijd van ESP's en herhaalde pompstoringen","Durată scurtă de funcționare a ESP și defecte repetate ale pompelor","Малая наработка ЭЦН и повторяющиеся отказы насосов"],
+"Scale, wax, sand or water breakthrough":["Scaling, wasafzetting, zand of waterdoorbraak","Depuneri de săruri, parafină, nisip sau inundare cu apă","Солеотложения, АСПО, вынос песка или прорыв воды"],
+"Well integrity and annulus pressure issues":["Problemen met putintegriteit en annulusdruk","Probleme de integritate a sondei și presiune în spațiul inelar","Нарушения целостности скважины и межколонные давления"],
+"Rotating & Static Equipment":["Roterende & statische apparatuur","Echipamente rotative și statice","Динамическое и статическое оборудование"],
+"Failures of the machines and vessels that keep a facility running.":["Storingen aan de machines en vaten die een installatie draaiende houden.","Defecte ale mașinilor și recipientelor care mențin o instalație în funcțiune.","Отказы машин и аппаратов, обеспечивающих работу объекта."],
+"Pump, compressor and turbine trips and seal failures":["Trips en afdichtingsstoringen van pompen, compressoren en turbines","Opriri și defecte de etanșare la pompe, compresoare și turbine","Остановы и отказы уплотнений насосов, компрессоров и турбин"],
+"Bearing, vibration and alignment problems":["Problemen met lagers, trillingen en uitlijning","Probleme de rulmenți, vibrații și aliniere","Проблемы подшипников, вибрации и центровки"],
+"Vessel, exchanger and valve failures":["Storingen aan vaten, warmtewisselaars en afsluiters","Defecte la recipiente, schimbătoare de căldură și robinete","Отказы аппаратов, теплообменников и арматуры"],
+"Pipeline Integrity & Metering":["Pijpleidingintegriteit & meting","Integritatea conductelor și măsurare","Целостность трубопроводов и учёт"],
+"Leaks, ruptures and measurement errors in pipelines and custody transfer systems.":["Lekkages, breuken en meetfouten in pijpleidingen en fiscale meetsystemen.","Scurgeri, rupturi și erori de măsurare în conducte și sisteme de transfer fiscal.","Утечки, разрывы и ошибки измерений в трубопроводах и системах коммерческого учёта."],
+"Internal and external corrosion, erosion and cracking":["Inwendige en uitwendige corrosie, erosie en scheurvorming","Coroziune internă și externă, eroziune și fisurare","Внутренняя и наружная коррозия, эрозия и растрескивание"],
+"Leaks, ruptures and third-party damage":["Lekkages, breuken en schade door derden","Scurgeri, rupturi și daune provocate de terți","Утечки, разрывы и повреждения третьими лицами"],
+"Meter drift, allocation imbalances and mismeasurement":["Meterdrift, allocatie-onbalans en meetfouten","Deriva contoarelor, dezechilibre de alocare și erori de măsurare","Дрейф счётчиков, дисбалансы распределения и ошибки учёта"],
+"Process safety":["Procesveiligheid","Siguranța proceselor","Промышленная безопасность"],
+"Process & Safety Incidents":["Proces- & veiligheidsincidenten","Incidente de proces și de siguranță","Технологические инциденты и аварии"],
+"Loss of containment, fires, near misses and safety system failures, investigated with the human and organisational factors in view.":["Verlies van insluiting, branden, bijna-ongevallen en falen van veiligheidssystemen, onderzocht met oog voor menselijke en organisatorische factoren.","Pierderi de izolare, incendii, incidente evitate la limită și defecte ale sistemelor de siguranță, investigate ținând cont de factorii umani și organizaționali.","Разгерметизация, пожары, предпосылки к происшествиям и отказы систем безопасности — с учётом человеческих и организационных факторов."],
+"Loss of primary containment events":["Gebeurtenissen met verlies van primaire insluiting","Evenimente de pierdere a izolării primare","Случаи разгерметизации оборудования"],
+"Safety instrumented system and trip failures":["Falen van veiligheidsinstrumentatie en tripsystemen","Defecte ale sistemelor instrumentate de siguranță și de oprire","Отказы ПАЗ и систем аварийного останова"],
+"Procedure, competence and management system gaps":["Tekortkomingen in procedures, competenties en managementsystemen","Lacune în proceduri, competențe și sisteme de management","Пробелы в процедурах, компетенциях и системе управления"],
+"New energy":["Nieuwe energie","Energie nouă","Новая энергетика"],
+"Renewable & Storage Assets":["Hernieuwbare & opslagassets","Active regenerabile și de stocare","Объекты ВИЭ и накопители"],
+"Underperformance and failures on solar, wind and battery installations.":["Onderprestatie en storingen bij zonne-, wind- en batterij-installaties.","Performanțe scăzute și defecte la instalațiile solare, eoliene și de baterii.","Недовыработка и отказы солнечных, ветровых и аккумуляторных установок."],
+"Inverter and string failures, PV yield shortfalls":["Storingen aan omvormers en strings, tekort aan PV-opbrengst","Defecte de invertor și de string, producție PV sub așteptări","Отказы инверторов и стрингов, недовыработка СЭС"],
+"Wind turbine gearbox and blade issues":["Problemen met tandwielkasten en bladen van windturbines","Probleme la multiplicatoarele și palele turbinelor eoliene","Проблемы редукторов и лопастей ветротурбин"],
+"Battery system faults and thermal events":["Storingen en thermische incidenten in batterijsystemen","Defecte ale sistemelor de baterii și evenimente termice","Неисправности аккумуляторных систем и тепловые инциденты"],
+"Our investigation process":["Ons onderzoeksproces","Procesul nostru de investigație","Наш процесс расследования"],
+"Six steps from the event to a closed-out action.":["Zes stappen van de gebeurtenis tot een afgesloten actie.","Șase pași de la eveniment la o acțiune închisă.","Шесть шагов от события до закрытой корректирующей меры."],
+"Every investigation follows the same sequence, so findings are traceable and the corrective actions are checked to be working.":["Elk onderzoek volgt dezelfde volgorde, zodat bevindingen herleidbaar zijn en wordt gecontroleerd of de corrigerende maatregelen werken.","Fiecare investigație urmează aceeași secvență, astfel încât constatările sunt trasabile, iar eficacitatea acțiunilor corective este verificată.","Каждое расследование проходит одну и ту же последовательность: выводы прослеживаемы, а эффективность корректирующих мер проверяется."],
+"Preserve evidence":["Bewijs veiligstellen","Conservarea dovezilor","Сохранение доказательств"],
+"Secure failed parts, data, logs and records before they are lost or altered.":["Stel defecte onderdelen, data, logs en registraties veilig voordat ze verloren gaan of veranderen.","Securizarea pieselor defecte, datelor, jurnalelor și înregistrărilor înainte de a fi pierdute sau modificate.","Сохранение отказавших деталей, данных, журналов и записей до их утраты или изменения."],
+"Define the problem":["Het probleem definiëren","Definirea problemei","Постановка задачи"],
+"Agree what happened, its impact and the scope of the investigation.":["Stem af wat er is gebeurd, wat de impact is en wat de scope van het onderzoek is.","Stabilirea a ceea ce s-a întâmplat, a impactului și a domeniului investigației.","Согласование того, что произошло, последствий и границ расследования."],
+"Build the timeline":["De tijdlijn opbouwen","Construirea cronologiei","Построение хронологии"],
+"Reconstruct the sequence of events from data, inspections and interviews.":["Reconstrueer de volgorde van gebeurtenissen uit data, inspecties en interviews.","Reconstituirea succesiunii evenimentelor din date, inspecții și interviuri.","Восстановление последовательности событий по данным, осмотрам и интервью."],
+"Analyse causes":["Oorzaken analyseren","Analiza cauzelor","Анализ причин"],
+"Work from symptoms to physical, human and organisational root causes.":["Werk van symptomen naar fysieke, menselijke en organisatorische grondoorzaken.","De la simptome la cauzele principale fizice, umane și organizaționale.","От симптомов к физическим, человеческим и организационным первопричинам."],
+"Corrective actions":["Corrigerende maatregelen","Acțiuni corective","Корректирующие меры"],
+"Set actions with owners and deadlines that remove each root cause.":["Leg acties vast met eigenaren en deadlines die elke grondoorzaak wegnemen.","Stabilirea acțiunilor, cu responsabili și termene, care elimină fiecare cauză principală.","Меры с ответственными и сроками, устраняющие каждую первопричину."],
+"Verify & close out":["Verifiëren & afsluiten","Verificare și închidere","Проверка и закрытие"],
+"Confirm the actions are in place and the failure has not returned.":["Bevestig dat de acties zijn uitgevoerd en de storing niet is teruggekeerd.","Confirmarea implementării acțiunilor și a faptului că defectul nu a revenit.","Подтверждение выполнения мер и отсутствия повторных отказов."],
+"Methods & standards":["Methoden & normen","Metode și standarde","Методы и стандарты"],
+"Recognised methods, defensible findings.":["Erkende methoden, verdedigbare bevindingen.","Metode recunoscute, concluzii solide.","Признанные методы, обоснованные выводы."],
+"Our investigations follow international standards, so the findings hold up with management, insurers and regulators.":["Onze onderzoeken volgen internationale normen, zodat de bevindingen standhouden bij management, verzekeraars en toezichthouders.","Investigațiile noastre respectă standardele internaționale, astfel încât concluziile rezistă în fața conducerii, asigurătorilor și autorităților.","Наши расследования соответствуют международным стандартам, поэтому выводы убедительны для руководства, страховщиков и надзорных органов."],
+"Root cause analysis":["Root cause analyse","Analiza cauzei principale","Анализ первопричин"],
+"Failure modes and effects analysis (FMEA)":["Faalwijze- en effectanalyse (FMEA)","Analiza modurilor de defectare și a efectelor (FMEA)","Анализ видов и последствий отказов (FMEA)"],
+"Fault tree analysis (FTA)":["Foutenboomanalyse (FTA)","Analiza arborelui de defecte (FTA)","Анализ дерева отказов (FTA)"],
+"Pressure equipment integrity incident investigation":["Onderzoek naar integriteitsincidenten bij drukapparatuur","Investigarea incidentelor de integritate a echipamentelor sub presiune","Расследование инцидентов с оборудованием под давлением"],
+"Process safety performance indicators":["Prestatie-indicatoren voor procesveiligheid","Indicatori de performanță pentru siguranța proceselor","Показатели промышленной безопасности"],
+"Reliability and maintenance data collection":["Verzameling van betrouwbaarheids- en onderhoudsdata","Colectarea datelor de fiabilitate și mentenanță","Сбор данных о надёжности и техобслуживании"],
+"Contact":["Contact","Contact","Контакты"],
+"Tell us about your asset.":["Vertel ons over uw asset.","Spuneți-ne despre activul dvs.","Расскажите о вашем объекте."],
+"Share the field, pipeline or problem you are working on. An engineer will review it and reply with a proposed scope.":["Vertel ons over het veld, de pijpleiding of het probleem waaraan u werkt. Een ingenieur beoordeelt het en reageert met een voorstel voor de scope.","Descrieți zăcământul, conducta sau problema la care lucrați. Un inginer o va analiza și vă va răspunde cu o propunere de lucru.","Опишите месторождение, трубопровод или задачу, над которой вы работаете. Инженер изучит её и предложит объём работ."],
+"Email":["E-mail","E-mail","Эл. почта"],
+"Phone":["Telefoon","Telefon","Телефон"],
+"Office":["Kantoor","Birou","Офис"],
+"The Netherlands":["Nederland","Țările de Jos","Нидерланды"],
+"KvK number (Dutch Chamber of Commerce)":["KvK-nummer","Număr KvK (Camera de Comerț din Țările de Jos)","Номер KvK (Торговая палата Нидерландов)"],
+"VAT number (BTW)":["Btw-nummer","Cod de TVA (BTW)","Номер плательщика НДС (BTW)"],
+"KvK 96999004 · VAT NL301251733B01":["KvK 96999004 · Btw NL301251733B01","KvK 96999004 · TVA NL301251733B01","KvK 96999004 · НДС NL301251733B01"],
+"Full name":["Volledige naam","Nume complet","ФИО"],
+"Company":["Bedrijf","Companie","Компания"],
+"Work email":["Zakelijk e-mailadres","E-mail de serviciu","Рабочий e-mail"],
+"Service":["Dienst","Serviciu","Услуга"],
+"Project management":["Projectmanagement","Management de proiect","Управление проектами"],
+"Geological & subsurface studies":["Geologische & ondergrondse studies","Studii geologice și de subsol","Геологические исследования недр"],
+"Reservoir engineering":["Reservoir-engineering","Ingineria zăcămintelor","Разработка месторождений"],
+"Production enhancement":["Productieverhoging","Creșterea producției","Интенсификация добычи"],
+"Pipeline metering":["Pijpleidingmeting","Măsurarea conductelor","Учёт в трубопроводах"],
+"Pipeline commissioning":["Inbedrijfstelling van pijpleidingen","Punerea în funcțiune a conductelor","Пусконаладка трубопроводов"],
+"Decarbonisation strategy":["Decarbonisatiestrategie","Strategie de decarbonizare","Стратегия декарбонизации"],
+"Methane & flaring reduction":["Reductie van methaan & affakkelen","Reducerea metanului și a arderii la faclă","Сокращение метана и сжигания на факелах"],
+"Solar PV & wind":["Zonne-PV & wind","Fotovoltaic și eolian","Солнечная и ветровая энергетика"],
+"Energy storage":["Energieopslag","Stocarea energiei","Накопители энергии"],
+"Carbon capture & storage (CCUS)":["CO₂-afvang & -opslag (CCUS)","Captarea și stocarea carbonului (CCUS)","Улавливание и хранение углерода (CCUS)"],
+"Not sure yet":["Weet ik nog niet","Încă nu știu","Пока не знаю"],
+"Project details":["Projectdetails","Detalii proiect","Описание проекта"],
+"Field or pipeline, location, current issue, timeline":["Veld of pijpleiding, locatie, huidig probleem, planning","Zăcământ sau conductă, locație, problema actuală, termen","Месторождение или трубопровод, местоположение, текущая проблема, сроки"],
+"Send enquiry":["Aanvraag versturen","Trimiteți solicitarea","Отправить запрос"],
+"We reply within two working days.":["We reageren binnen twee werkdagen.","Răspundem în două zile lucrătoare.","Мы отвечаем в течение двух рабочих дней."],
+"Please fill in your name, a valid work email and the project details.":["Vul uw naam, een geldig zakelijk e-mailadres en de projectdetails in.","Completați numele, un e-mail de serviciu valid și detaliile proiectului.","Укажите имя, действующий рабочий e-mail и описание проекта."],
+"Sending your request…":["Uw aanvraag wordt verstuurd…","Se trimite solicitarea…","Отправляем запрос…"],
+"Thank you, {name}. Your request has been sent. We reply within two working days.":["Bedankt, {name}. Uw aanvraag is verstuurd. We reageren binnen twee werkdagen.","Vă mulțumim, {name}. Solicitarea dvs. a fost trimisă. Răspundem în două zile lucrătoare.","Спасибо, {name}. Ваш запрос отправлен. Мы ответим в течение двух рабочих дней."],
+"We couldn't send your request. Please try again, or contact us by email or WhatsApp.":["Uw aanvraag kon niet worden verstuurd. Probeer het opnieuw of neem contact op via e-mail of WhatsApp.","Solicitarea nu a putut fi trimisă. Încercați din nou sau contactați-ne prin e-mail sau WhatsApp.","Не удалось отправить запрос. Попробуйте ещё раз или свяжитесь с нами по e-mail или в WhatsApp."],
+"Email TIS at ibrahim.abdellatif1@outlook.com":["E-mail TIS via ibrahim.abdellatif1@outlook.com","Trimiteți un e-mail către TIS la ibrahim.abdellatif1@outlook.com","Написать TIS на ibrahim.abdellatif1@outlook.com"],
+"Email us":["Mail ons","Scrieți-ne","Написать нам"],
+"Chat with TIS on WhatsApp":["Chat met TIS via WhatsApp","Discutați cu TIS pe WhatsApp","Написать TIS в WhatsApp"],
+"Chat on WhatsApp":["Chat via WhatsApp","Scrieți pe WhatsApp","Чат в WhatsApp"],
+"Consultancy and engineering services for oil, gas and new energy":["Consultancy- en engineeringdiensten voor olie, gas en nieuwe energie","Servicii de consultanță și inginerie pentru petrol, gaze și energie nouă","Консалтинговые и инженерные услуги для нефтегазовой отрасли и новой энергетики"]
+};
+var TIS_LANG='en';
+function tisT(s){
+  if(TIS_LANG==='en') return s;
+  var e=TIS_I18N[s], i={nl:0,ro:1,ru:2}[TIS_LANG];
+  return (e && e[i]) ? e[i] : s;
+}
+(function(){
+  /* keep the service sent to the admin panel in English, whatever language the visitor uses */
+  [].slice.call(document.querySelectorAll('#f-service option')).forEach(function(o){ if(!o.hasAttribute('value')) o.value=o.textContent.trim(); });
+  var textNodes=[], attrNodes=[];
+  var walker=document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {acceptNode:function(n){
+    var p=n.parentNode; if(!p) return NodeFilter.FILTER_REJECT;
+    if(p.closest && p.closest('script,style,title,[data-state],#f-note,#lang-select,#tis-admin')) return NodeFilter.FILTER_REJECT;
+    return TIS_I18N[n.nodeValue.trim()] ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+  }});
+  var n; while((n=walker.nextNode())){
+    var m=n.nodeValue.match(/^(\s*)([\s\S]*?)(\s*)$/);
+    textNodes.push({node:n, pre:m[1], key:m[2], post:m[3]});
+  }
+  [].slice.call(document.querySelectorAll('[aria-label],[placeholder]')).forEach(function(el){
+    if(el.closest('#tis-admin')) return;
+    ['aria-label','placeholder'].forEach(function(a){
+      var v=el.getAttribute(a); if(v && TIS_I18N[v]) attrNodes.push({el:el, attr:a, key:v});
+    });
+  });
+  var note=document.getElementById('f-note'), sel=document.getElementById('lang-select');
+  function applyLang(l){
+    TIS_LANG = ({en:1,nl:1,ro:1,ru:1})[l] ? l : 'en';
+    document.documentElement.lang = TIS_LANG;
+    textNodes.forEach(function(t){ t.node.nodeValue = t.pre + tisT(t.key) + t.post; });
+    attrNodes.forEach(function(a){ a.el.setAttribute(a.attr, tisT(a.key)); });
+    if(note && !note.dataset.msg) note.textContent = tisT('We reply within two working days.');
+    if(sel) sel.value = TIS_LANG;
+    try{ localStorage.setItem('tis-lang', TIS_LANG); }catch(e){}
+    document.dispatchEvent(new Event('tis:lang'));
+  }
+  var start='en';
+  try{ var saved=localStorage.getItem('tis-lang'); if(saved) start=saved; }catch(e){}
+  if(start==='en'){ try{ var saved2=localStorage.getItem('tis-lang'); if(!saved2){ var nav=(navigator.language||'').slice(0,2).toLowerCase(); if(nav==='nl'||nav==='ro'||nav==='ru') start=nav; } }catch(e){} }
+  if(sel) sel.addEventListener('change', function(){ applyLang(sel.value); });
+  applyLang(start);
+})();
+</script>
+<script>
+(function(){
+  var form=document.getElementById('enquiry'), note=document.getElementById('f-note');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var bad=[].slice.call(form.querySelectorAll('[required]')).filter(function(el){return !el.value.trim()||(el.type==='email'&&!/^\S+@\S+\.\S+$/.test(el.value));});
+    if(bad.length){
+      note.className='note';
+      note.dataset.msg='1';
+      note.textContent=tisT('Please fill in your name, a valid work email and the project details.');
+      bad[0].focus(); return;
+    }
+    var btn=form.querySelector('button[type=submit]');
+    var first=document.getElementById('f-name').value.trim().split(' ')[0];
+    note.className='note'; note.dataset.msg='1'; note.textContent=tisT('Sending your request…'); btn.disabled=true;
+    fetch(String(TIS_DB_URL).replace(/\/+$/,'') + '/rest/v1/rpc/tis_submit_enquiry', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':TIS_DB_KEY},
+      body:JSON.stringify({
+        p_name:document.getElementById('f-name').value,
+        p_company:document.getElementById('f-company').value,
+        p_email:document.getElementById('f-email').value,
+        p_service:document.getElementById('f-service').value,
+        p_message:document.getElementById('f-msg').value,
+        p_department:window.TIS_DEPT||'oil',
+        p_lang:TIS_LANG
+      })
+    }).then(function(r){ return r.ok ? r.json() : Promise.reject(r.status); })
+    .then(function(res){
+      if(!res || !res.ok) throw new Error(res && res.error);
+      note.className='note ok';
+      note.textContent=tisT('Thank you, {name}. Your request has been sent. We reply within two working days.').replace('{name}', first);
+      form.reset();
+    }).catch(function(){
+      note.className='note';
+      note.textContent=tisT("We couldn't send your request. Please try again, or contact us by email or WhatsApp.");
+    }).then(function(){ btn.disabled=false; });
+  });
+})();
+(function(){
+  var switches=[].slice.call(document.querySelectorAll('[data-set]'));
+  var panels=[].slice.call(document.querySelectorAll('[data-dept]'));
+  var cur='oil';
+  document.addEventListener('tis:lang', function(){ setDept(cur, false); });
+  function setDept(d, scroll){
+    cur=d; window.TIS_DEPT=d;
+    panels.forEach(function(el){ el.hidden = el.getAttribute('data-dept')!==d; });
+    switches.forEach(function(b){
+      var on=b.getAttribute('data-set')===d;
+      b.setAttribute('aria-pressed', on?'true':'false');
+      var s=b.querySelector('[data-state]'); if(s) s.textContent = tisT(on?'Viewing':'View');
+    });
+    try{ localStorage.setItem('tis-dept', d); }catch(e){}
+    try{ history.replaceState(null,'', d==='energy' ? '#new-energy' : d==='rca' ? '#root-cause-analysis' : '#oil-gas'); }catch(e){}
+    if(scroll){ document.getElementById('departments').scrollIntoView({behavior:'smooth', block:'start'}); }
+  }
+  switches.forEach(function(b){ b.addEventListener('click', function(){ setDept(b.getAttribute('data-set'), b.classList.contains('seg')); }); });
+  var start='oil', h=(location.hash||'').toLowerCase();
+  if(h==='#new-energy'||h==='#energy') start='energy';
+  else if(h==='#root-cause-analysis'||h==='#rca') start='rca';
+  else if(h!=='#oil-gas'){ try{ var s=localStorage.getItem('tis-dept'); if(s==='energy'||s==='rca') start=s; }catch(e){} }
+  setDept(start, false);
+})();
+</script>
+<script>
+/* ===== Admin panel ===== */
+(function(){
+  var DEPT = {oil:'Oil & Gas', energy:'New Energy', rca:'Root Cause Analysis'};
+  var STATUS = {new:'New', in_progress:'In progress', done:'Done'};
+  var LANG = {en:'English', nl:'Dutch', ro:'Romanian', ru:'Russian'};
+  var CONFIGURED = String(TIS_DB_URL).indexOf('PASTE')<0 && String(TIS_DB_KEY).indexOf('PASTE')<0;
+  var pass='', rows=[], selected=null, timer=null;
+  function $(id){ return document.getElementById(id); }
+  function el(tag, cls, text){ var e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
+  function fmt(d){ try{ return new Date(d).toLocaleString('en-GB',{dateStyle:'medium',timeStyle:'short'}); }catch(e){ return d; } }
+  var panel=$('tis-admin');
+
+  function openAdmin(){
+    panel.hidden=false; document.documentElement.style.overflow='hidden';
+    try{ history.replaceState(null,'','#admin'); }catch(e){}
+    if(pass){ showApp(); } else { $('adm-pass').focus(); }
+  }
+  function closeAdmin(){
+    panel.hidden=true; document.documentElement.style.overflow='';
+    try{ history.replaceState(null,'', location.pathname + location.search); }catch(e){}
+    $('adm-open').focus();
+  }
+  $('adm-open').addEventListener('click', openAdmin);
+  $('adm-back-1').addEventListener('click', closeAdmin);
+  $('adm-back-2').addEventListener('click', closeAdmin);
+  panel.addEventListener('keydown', function(e){ if(e.key==='Escape' && !panel.querySelector('.a-confirm')) closeAdmin(); });
+
+  var DEMO=false;
+  function demoRows(){
+    var now=Date.now();
+    return [
+      {id:-1, created_at:new Date(now-2*36e5).toISOString(), name:'Anna de Vries', company:'North Sea Gas BV', email:'anna@example.com', service:'Pipeline metering', message:'We need an audit of two ultrasonic gas meters at our export station. Allocation has been off by about 0.4% for three months.', department:'oil', lang:'nl', status:'new', notes:''},
+      {id:-2, created_at:new Date(now-26*36e5).toISOString(), name:'Ion Popescu', company:'Petro Example SRL', email:'ion@example.com', service:'Root cause analysis', message:'Repeated compressor trips over the last month on our gas gathering station. We would like an independent investigation.', department:'rca', lang:'ro', status:'in_progress', notes:'Call booked for Thursday.'},
+      {id:-3, created_at:new Date(now-5*864e5).toISOString(), name:'Dmitry Ivanov', company:'Example Energy', email:'dmitry@example.com', service:'Carbon capture & storage (CCUS)', message:'We are screening a depleted gas field for CO2 storage and need a capacity and cap rock integrity study.', department:'energy', lang:'ru', status:'done', notes:'Proposal sent.'}
+    ];
+  }
+  function demoRpc(name){
+    if(name==='tis_admin_list') return {ok:true, rows: rows.length ? rows : demoRows()};
+    return {ok:true};
+  }
+  function rpc(name, body){
+    if(DEMO) return Promise.resolve(demoRpc(name, body));
+    if(!CONFIGURED) return Promise.reject(new Error('config'));
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timeout = new Promise(function(_, rej){ setTimeout(function(){ try{ if(ctrl) ctrl.abort(); }catch(e){} rej(new Error('timeout')); }, 6000); });
+    var req = fetch(String(TIS_DB_URL).replace(/\/+$/,'') + '/rest/v1/rpc/' + name, {
+      method:'POST', headers:{'Content-Type':'application/json','apikey':TIS_DB_KEY}, body:JSON.stringify(body),
+      signal: ctrl ? ctrl.signal : undefined
+    }).then(function(r){
+      if(r.status===404) throw new Error('setup');
+      if(!r.ok) throw new Error('network');
+      return r.json();
+    });
+    return Promise.race([req, timeout]);
+  }
+  function explain(err){
+    var m=(err && err.message) || err;
+    if(m==='wrong') return 'Wrong passcode. Please try again.';
+    if(m==='locked') return 'Too many wrong attempts. The panel is locked for 15 minutes.';
+    if(m==='config') return 'Supabase is not connected yet. Paste your project URL and publishable key at the top of index.html.';
+    if(m==='setup') return 'The database is not set up yet. Run tis-setup.sql in the Supabase SQL Editor first.';
+    return 'Could not reach the database. If you opened this inside Claude, that is expected: the preview blocks outside connections. Upload index.html to your website and open it there. You can also preview the panel with sample data below.';
+  }
+  function load(){
+    return rpc('tis_admin_list',{p_pass:pass}).then(function(res){
+      if(!res.ok) throw new Error(res.error);
+      rows=res.rows||[];
+      $('adm-updated').textContent='Updated ' + new Date().toLocaleTimeString('en-GB',{timeStyle:'short'});
+      render();
+    });
+  }
+  function showApp(){
+    $('adm-login-view').hidden=true; $('adm-app-view').hidden=false;
+    if(!timer) timer=setInterval(function(){ if(pass && !panel.hidden && !document.hidden) load().catch(function(){}); }, 60000);
+  }
+
+  /* The passcode is checked here first (slow salted fingerprint, never the passcode itself),
+     and again by the database before any real request is shown. */
+  var PASS_SALT='tis-new-energy-admin', PASS_ITER=150000, PASS_HASH='9461ef481aaef7f69c587a2f6f5d63063f2ab48e34855cdfad544942a22fb09c';
+  function checkLocal(p){
+    if(!(window.crypto && crypto.subtle && window.TextEncoder)) return Promise.resolve(null);
+    var enc=new TextEncoder();
+    return crypto.subtle.importKey('raw', enc.encode(p), 'PBKDF2', false, ['deriveBits'])
+      .then(function(k){ return crypto.subtle.deriveBits({name:'PBKDF2', salt:enc.encode(PASS_SALT), iterations:PASS_ITER, hash:'SHA-256'}, k, 256); })
+      .then(function(bits){ return Array.prototype.map.call(new Uint8Array(bits), function(x){ return ('0'+x.toString(16)).slice(-2); }).join('') === PASS_HASH; })
+      .catch(function(){ return null; });
+  }
+  function demoNote(err){
+    var m=(err && err.message) || err, why;
+    if(m==='config') why='Supabase is not connected in this file yet.';
+    else if(m==='setup') why='The database is not set up yet (run tis-setup.sql in Supabase).';
+    else why='The database cannot be reached from here. This is normal inside the Claude preview; on your published website your real requests appear here.';
+    return why + ' Showing sample requests. Changes are not saved.';
+  }
+  function backToLogin(text){
+    pass=''; DEMO=false; rows=[]; $('adm-demo').hidden=true;
+    $('adm-app-view').hidden=true; $('adm-login-view').hidden=false;
+    $('adm-login-msg').className='a-msg err'; $('adm-login-msg').textContent=text; $('adm-pass').focus();
+  }
+  function enterPanel(){
+    DEMO=false; rows=[]; selected=null;
+    try{ sessionStorage.setItem('tis-admin', pass); }catch(e){}
+    showApp(); clearDetail('Select a request to see its details.');
+    var list=$('adm-list'); list.textContent=''; list.appendChild(el('div','a-empty','Loading requests…'));
+    $('adm-updated').textContent='Connecting…';
+    load().then(function(){ $('adm-demo').hidden=true; }).catch(function(err){
+      var m=err && err.message;
+      if(m==='wrong'||m==='locked'){ backToLogin(explain(err)); return; }
+      DEMO=true; $('adm-demo').textContent=demoNote(err); $('adm-demo').hidden=false;
+      load().then(function(){ $('adm-updated').textContent='Not connected'; });
+    });
+  }
+
+  $('adm-login-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var msg=$('adm-login-msg');
+    pass=$('adm-pass').value;
+    if(!pass){ msg.className='a-msg err'; msg.textContent='Enter the passcode.'; return; }
+    $('adm-login-btn').disabled=true; msg.className='a-msg'; msg.textContent='Checking…';
+    checkLocal(pass).then(function(ok){
+      $('adm-login-btn').disabled=false;
+      if(ok===false){ pass=''; msg.className='a-msg err'; msg.textContent='Wrong passcode. Please try again.'; $('adm-pass').select(); return; }
+      msg.textContent='';
+      enterPanel();
+    });
+  });
+
+  $('adm-lock').addEventListener('click', function(){
+    pass=''; rows=[]; selected=null; DEMO=false; $('adm-demo').hidden=true;
+    try{ sessionStorage.removeItem('tis-admin'); }catch(e){}
+    $('adm-pass').value=''; $('adm-app-view').hidden=true; $('adm-login-view').hidden=false; $('adm-pass').focus();
+  });
+  $('adm-refresh').addEventListener('click', function(){
+    if(DEMO){
+      DEMO=false; var keep=rows; rows=[];
+      load().then(function(){ $('adm-demo').hidden=true; }).catch(function(){ DEMO=true; rows=keep; render(); $('adm-updated').textContent='Still not connected'; });
+      return;
+    }
+    load().catch(function(err){ $('adm-updated').textContent=explain(err); });
+  });
+  ['adm-q','adm-fs','adm-fd'].forEach(function(id){ $(id).addEventListener('input', render); });
+
+  function filtered(){
+    var q=$('adm-q').value.trim().toLowerCase(), fs=$('adm-fs').value, fd=$('adm-fd').value;
+    return rows.filter(function(r){
+      if(fs && r.status!==fs) return false;
+      if(fd && r.department!==fd) return false;
+      if(q){ var hay=[r.name,r.company,r.email,r.message,r.service].join(' ').toLowerCase(); if(hay.indexOf(q)<0) return false; }
+      return true;
+    });
+  }
+  function count(s){ return rows.filter(function(r){ return r.status===s; }).length; }
+
+  function render(){
+    $('adm-s-total').textContent=rows.length;
+    $('adm-s-new').textContent=count('new');
+    $('adm-s-prog').textContent=count('in_progress');
+    $('adm-s-done').textContent=count('done');
+    var list=$('adm-list'); list.textContent='';
+    var items=filtered();
+    if(!items.length) list.appendChild(el('div','a-empty', rows.length ? 'No requests match these filters.' : 'No requests yet. New requests from the website form will appear here.'));
+    items.forEach(function(r){
+      var b=el('button','a-row'); b.type='button';
+      if(selected && selected.id===r.id) b.setAttribute('aria-current','true');
+      b.appendChild(el('span','a-who', r.name + (r.company ? ' · ' + r.company : '')));
+      b.appendChild(el('span','a-pill ' + r.status, STATUS[r.status]||r.status));
+      b.appendChild(el('span','a-sub', r.message));
+      var meta=el('span','a-meta');
+      meta.appendChild(el('span',null,fmt(r.created_at)));
+      if(r.service) meta.appendChild(el('span',null,r.service));
+      if(DEPT[r.department]) meta.appendChild(el('span',null,DEPT[r.department]));
+      b.appendChild(meta);
+      b.addEventListener('click', function(){ selected=r; render(); showDetail(r); if(window.innerWidth<960) $('adm-detail').scrollIntoView({behavior:'smooth'}); });
+      list.appendChild(b);
+    });
+    if(selected && !rows.some(function(r){ return r.id===selected.id; })){ selected=null; clearDetail('Select a request to see its details.'); }
+  }
+  function clearDetail(t){ var d=$('adm-detail'); d.textContent=''; d.appendChild(el('div','a-empty',t)); }
+  function field(k, v, href){
+    var f=el('div'); f.appendChild(el('div','a-k',k));
+    var vv=el('div','a-v');
+    if(href && v){ var a=el('a',null,v); a.href=href; vv.appendChild(a); } else vv.textContent=v||'—';
+    f.appendChild(vv); return f;
+  }
+  function mailto(r){ return 'mailto:' + r.email + '?subject=' + encodeURIComponent('Re: your enquiry to TIS New Energy'); }
+
+  function showDetail(r){
+    var d=$('adm-detail'); d.textContent='';
+    var top=el('div'); top.style.cssText='display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap';
+    top.appendChild(el('h3',null,r.name)); top.appendChild(el('span','a-pill '+r.status, STATUS[r.status]));
+    d.appendChild(top);
+    var fs=el('div','a-fields');
+    fs.appendChild(field('Email', r.email, mailto(r)));
+    fs.appendChild(field('Company', r.company));
+    fs.appendChild(field('Service', r.service));
+    fs.appendChild(field('Department', DEPT[r.department]||r.department));
+    fs.appendChild(field('Received', fmt(r.created_at)));
+    fs.appendChild(field('Language', LANG[r.lang]||r.lang));
+    d.appendChild(fs);
+    var mw=el('div'); mw.appendChild(el('div','a-k','Project details')); mw.appendChild(el('div','a-message', r.message)); d.appendChild(mw);
+
+    var ed=el('div','a-edit');
+    var l1=el('label',null,'Status'); l1.htmlFor='adm-d-status';
+    var st=el('select'); st.id='adm-d-status';
+    Object.keys(STATUS).forEach(function(k){ var o=el('option',null,STATUS[k]); o.value=k; if(k===r.status) o.selected=true; st.appendChild(o); });
+    var l2=el('label',null,'Internal notes (only visible here)'); l2.htmlFor='adm-d-notes';
+    var nt=el('textarea'); nt.id='adm-d-notes'; nt.value=r.notes||''; nt.placeholder='Follow-up, quote sent, call scheduled…';
+    ed.appendChild(l1); ed.appendChild(st); ed.appendChild(l2); ed.appendChild(nt);
+    d.appendChild(ed);
+
+    var acts=el('div','a-actions');
+    var save=el('button','a-btn primary','Save changes'); save.type='button';
+    var reply=el('a','a-btn','Reply by email'); reply.href=mailto(r);
+    var del=el('button','a-btn danger','Delete'); del.type='button';
+    var toast=el('span','a-toast'); toast.setAttribute('role','status');
+    acts.appendChild(save); acts.appendChild(reply); acts.appendChild(del); acts.appendChild(toast);
+    d.appendChild(acts);
+
+    save.addEventListener('click', function(){
+      save.disabled=true; toast.className='a-toast'; toast.textContent='Saving…';
+      rpc('tis_admin_update',{p_pass:pass, p_id:r.id, p_status:st.value, p_notes:nt.value}).then(function(res){
+        if(!res.ok) throw new Error(res.error);
+        r.status=st.value; r.notes=nt.value; render(); showDetail(r);
+        var t=$('adm-detail').querySelector('.a-toast'); if(t) t.textContent='Saved.';
+      }).catch(function(err){ toast.className='a-toast err'; toast.textContent=explain(err); save.disabled=false; });
+    });
+    del.addEventListener('click', function(){
+      if(d.querySelector('.a-confirm')) return;
+      var c=el('div','a-confirm'); c.appendChild(el('span',null,'Delete this request permanently?'));
+      var yes=el('button','a-btn danger solid','Yes, delete'); yes.type='button';
+      var no=el('button','a-btn','Cancel'); no.type='button';
+      c.appendChild(yes); c.appendChild(no); d.appendChild(c); no.focus();
+      no.addEventListener('click', function(){ c.remove(); del.focus(); });
+      yes.addEventListener('click', function(){
+        yes.disabled=true;
+        rpc('tis_admin_delete',{p_pass:pass, p_id:r.id}).then(function(res){
+          if(!res.ok) throw new Error(res.error);
+          rows=rows.filter(function(x){ return x.id!==r.id; }); selected=null; render(); clearDetail('Request deleted.');
+        }).catch(function(err){ c.textContent=explain(err); });
+      });
+    });
+  }
+
+  $('adm-export').addEventListener('click', function(){
+    var cols=['id','created_at','status','name','company','email','service','department','lang','message','notes'];
+    var esc=function(v){ v=(v==null?'':String(v)); if(/^[=+\-@]/.test(v)) v="'"+v; return '"'+v.replace(/"/g,'""')+'"'; };
+    var csv=[cols.join(',')].concat(filtered().map(function(r){ return cols.map(function(c){ return esc(r[c]); }).join(','); })).join('\r\n');
+    var a=document.createElement('a'); a.href=URL.createObjectURL(new Blob(['﻿'+csv],{type:'text/csv;charset=utf-8'}));
+    a.download='tis-requests-'+new Date().toISOString().slice(0,10)+'.csv'; document.body.appendChild(a); a.click(); a.remove();
+  });
+
+  try{ var saved=sessionStorage.getItem('tis-admin'); if(saved){ checkLocal(saved).then(function(ok){ if(ok!==false){ pass=saved; enterPanel(); } else { try{ sessionStorage.removeItem('tis-admin'); }catch(e){} } }); } }catch(e){}
+  if(TIS_OPEN_ADMIN) openAdmin();
+})();
+</script>
